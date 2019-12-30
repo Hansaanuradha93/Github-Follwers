@@ -15,11 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return } // Create window scenne
+        
+        // Create navigation controllers
+        let searchNavigationController = UINavigationController(rootViewController: SearchViewController())
+        let favouriteListNavigationController = UINavigationController(rootViewController: FavouriteListViewController())
+        
+        // Create tab bar controller
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [searchNavigationController, favouriteListNavigationController] // Add view controllers to the tab bar
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
