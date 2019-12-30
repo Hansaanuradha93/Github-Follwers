@@ -17,18 +17,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return } // Create window scenne
         
-        // Create navigation controllers
-        let searchNavigationController = UINavigationController(rootViewController: SearchViewController())
-        let favouriteListNavigationController = UINavigationController(rootViewController: FavouriteListViewController())
-        
-        // Create tab bar controller
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [searchNavigationController, favouriteListNavigationController] // Add view controllers to the tab bar
-        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = tabBarController
+        window?.rootViewController = createTabBarController()
         window?.makeKeyAndVisible()
+    }
+    
+    // Create Search Navigation Controller
+    func createSearchNC() -> UINavigationController {
+        let searchVC = SearchViewController()
+        searchVC.title = "Search"
+        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        
+        return UINavigationController(rootViewController: searchVC)
+    }
+    
+    
+    // Create Favourite List Navigation Controller
+    func createFavouriteListNC() -> UINavigationController {
+        let favouriteListVC = FavouriteListViewController()
+        favouriteListVC.title = "Favourites"
+        favouriteListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        
+        return UINavigationController(rootViewController: favouriteListVC)
+    }
+    
+    
+    // Create Tab Bar Controller
+    func createTabBarController() -> UITabBarController {
+        // Create tab bar controller
+        let tabBar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen
+        tabBar.viewControllers = [createSearchNC(), createFavouriteListNC()] // Add view controllers to the tab bar
+        
+        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
