@@ -10,9 +10,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    let logoImageView = UIImageView()
-    let usernameTextField = GFTextField()
-    let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
+    let logoImageView       = UIImageView()
+    let usernameTextField   = GFTextField()
+    let callToActionButton  = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
     
     var isUsernameEntered: Bool { return  !usernameTextField.text!.isEmpty }
     
