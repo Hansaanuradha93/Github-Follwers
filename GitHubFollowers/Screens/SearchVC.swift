@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchVC: UIViewController {
 
     let logoImageView       = UIImageView()
     let usernameTextField   = GFTextField()
@@ -41,11 +41,11 @@ class SearchViewController: UIViewController {
     @objc func pushFollwersViewController() {
         
         guard isUsernameEntered else {
-            print("No username")
+            presentGFAlertOnMainTread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀.", buttonTitle: "Ok")
             return
         }
         
-        let follwersListVC      = FollwersListViewController()
+        let follwersListVC      = FollwersListVC()
         follwersListVC.username = usernameTextField.text
         follwersListVC.title    = usernameTextField.text
         navigationController?.pushViewController(follwersListVC, animated: true)
@@ -92,7 +92,7 @@ class SearchViewController: UIViewController {
 }
 
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollwersViewController()
         return true

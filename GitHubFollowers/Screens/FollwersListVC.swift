@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollwersListViewController: UIViewController {
+class FollwersListVC: UIViewController {
 
     var username: String!
     
