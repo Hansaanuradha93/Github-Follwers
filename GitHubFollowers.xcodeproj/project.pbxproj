@@ -172,10 +172,10 @@
 			isa = PBXGroup;
 			children = (
 				4778FCCD23BF61ED00B0E55D /* Model */,
-				4778FCCC23BF61C900B0E55D /* Support */,
 				4778FCC523BF515200B0E55D /* Custom Views */,
 				4778FCC323BF50D400B0E55D /* Screens */,
 				4778FCC423BF50FD00B0E55D /* Extensions */,
+				4778FCCC23BF61C900B0E55D /* Support */,
 			);
 			path = GitHubFollowers;
 			sourceTree = "<group>";

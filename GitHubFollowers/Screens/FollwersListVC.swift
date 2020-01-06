@@ -15,8 +15,12 @@ class FollwersListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationController?.isNavigationBarHidden = false // Get back the navigation bar
         navigationController?.navigationBar.prefersLargeTitles = true // Get large titles
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true) // Show the navigation bar
     }
 
 }

@@ -29,7 +29,11 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = true // Hide the navigation bar
+        navigationController?.setNavigationBarHidden(true, animated: true) // Hide the navigation bar
+        
+        // Lets clear the Search screen everytime when the user come back 
+        usernameTextField.text = ""
+        view.endEditing(true)
     }
     
     
