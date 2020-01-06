@@ -18,9 +18,9 @@ class FollwersListVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true // Get large titles
         
         
-        NetworkManager.shared.getFollwers(for: username, page: 1) { (followers, error) in
+        NetworkManager.shared.getFollwers(for: username, page: 1) { (followers, errorMessage) in
             guard let followers = followers else {
-                self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: error!, buttonTitle: "Ok")
+                self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: errorMessage!.rawValue, buttonTitle: "Ok")
                 return
             }
             
@@ -28,6 +28,7 @@ class FollwersListVC: UIViewController {
             print(followers)
         }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

@@ -15,28 +15,28 @@ class NetworkManager {
     
     private init() {}
     
-    func getFollwers(for username: String, page: Int, completed: @escaping ([Follower]?, String?) -> Void) {
+    func getFollwers(for username: String, page: Int, completed: @escaping ([Follower]?, ErrorMessages?) -> Void) {
         let endPoint: String = baseURL + "users/\(username)/followers?per_page=\(perPage)&page=\(page)"
         
         guard let url = URL(string: endPoint) else {
-            completed(nil, "This username created an invalid request. Please try again.")
+            completed(nil, .invalidUsername)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let _ = error { // Error validation
-                completed(nil, "Unable to complete the request. Please check your internet connection.")
+                completed(nil, .unableToComplete)
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { // Response validation
-                completed(nil, "Invalid response from the server. Please try again")
+                completed(nil, .invalidResponse)
                 return
             }
             
             guard let data = data else { // Data validation
-                completed(nil, "Data recieved from the server is invalid. Please try again.")
+                completed(nil, .invalidData)
                 return
             }
             
@@ -47,14 +47,14 @@ class NetworkManager {
                 
                 completed(follwers, nil)
             } catch {
-                completed(nil, "Data recieved from the server is invalid. Please try again.")
+                completed(nil, .invalidData)
             }
             
             
             
         }
         
-        task.resume()
+        task.resume() // Start the task
     }
 }
 
