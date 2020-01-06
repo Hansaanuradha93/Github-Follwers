@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4768D6FE23C2F53400D6F9FF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4768D6FD23C2F53400D6F9FF /* NetworkManager.swift */; };
 		4778FCC223BF44D500B0E55D /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778FCC123BF44D500B0E55D /* UIViewController+Ext.swift */; };
 		4778FCCF23BF620500B0E55D /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778FCCE23BF620500B0E55D /* Follower.swift */; };
 		4778FCD123BF645600B0E55D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778FCD023BF645600B0E55D /* User.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4768D6FD23C2F53400D6F9FF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4778FCC123BF44D500B0E55D /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		4778FCCE23BF620500B0E55D /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		4778FCD023BF645600B0E55D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4768D6FC23C2F51D00D6F9FF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4768D6FD23C2F53400D6F9FF /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		4778FCC323BF50D400B0E55D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 				4778FCCD23BF61ED00B0E55D /* Model */,
 				4778FCC523BF515200B0E55D /* Custom Views */,
 				4778FCC323BF50D400B0E55D /* Screens */,
+				4768D6FC23C2F51D00D6F9FF /* Managers */,
 				4778FCC423BF50FD00B0E55D /* Extensions */,
 				4778FCCC23BF61C900B0E55D /* Support */,
 			);
@@ -254,6 +265,7 @@
 				4778FCCF23BF620500B0E55D /* Follower.swift in Sources */,
 				4778FCC223BF44D500B0E55D /* UIViewController+Ext.swift in Sources */,
 				47C41B8023BC73B700A94703 /* GFTextField.swift in Sources */,
+				4768D6FE23C2F53400D6F9FF /* NetworkManager.swift in Sources */,
 				47A3CDF523BA353E000A8E73 /* FavouriteListVC.swift in Sources */,
 				47C41B7E23BC500E00A94703 /* GFButton.swift in Sources */,
 				47C41B8223BCB3AC00A94703 /* FollwersListVC.swift in Sources */,
