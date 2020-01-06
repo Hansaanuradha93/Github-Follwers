@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowerCellCollectionViewCell: UICollectionViewCell {
+class FollowerCollectionViewCell: UICollectionViewCell {
     
     static let reuseID  = "FollowerCell"
     
