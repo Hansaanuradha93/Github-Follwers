@@ -27,10 +27,27 @@ class FollwersListVC: UIViewController {
     }
     
     private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCollectionViewFlowLayout(for: 3)) // 3 columns
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemPink
         collectionView.register(FollowerCollectionViewCell.self, forCellWithReuseIdentifier: FollowerCollectionViewCell.reuseID)
+    }
+    
+    private func createCollectionViewFlowLayout(for columns: CGFloat) -> UICollectionViewFlowLayout {
+        
+        let collectionViewWidth                 = view.bounds.width
+        let padding: CGFloat                    = 12
+        let minimumInterItemSpacing: CGFloat    = 10
+        let spaceBetweenCells                   = minimumInterItemSpacing * (columns - 1)
+        let adjustedWidth                       = collectionViewWidth - spaceBetweenCells - padding * 2
+        let width: CGFloat                      = floor(adjustedWidth / columns)
+        let height: CGFloat                     = width + 40
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset                 = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        flowLayout.itemSize                     = CGSize(width: width, height: height)
+        
+        return flowLayout
     }
     
     private func configureViewController() {
