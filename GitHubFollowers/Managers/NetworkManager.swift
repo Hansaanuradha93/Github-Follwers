@@ -11,7 +11,7 @@ import UIKit
 class NetworkManager {
     static let shared = NetworkManager()
     private let baseURL: String = "https://api.github.com/"
-    private let perPage = 100
+    private let perPage: Int = 100
     let cache = NSCache<NSString, UIImage>()
     
     private init() {}
