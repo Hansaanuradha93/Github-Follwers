@@ -45,9 +45,9 @@ enum GithubEndPoint {
         
     // Query Components
     private var queryComponents: [URLQueryItem] {
-        var components = [URLQueryItem]()
+        var components      = [URLQueryItem]()
         for(key, value) in parameters {
-            let queryItem = URLQueryItem(name: key, value: "\(value)")
+            let queryItem   = URLQueryItem(name: key, value: "\(value)")
             components.append(queryItem)
         }
         return components
@@ -55,11 +55,11 @@ enum GithubEndPoint {
     
     var url: URL {
 //        var components = URLComponents(string: baseURL)!
-        var components = URLComponents()
-        components.scheme = scheme
-        components.host = host
-        components.path = path
-        components.queryItems = queryComponents
+        var components          = URLComponents()
+        components.scheme       = scheme
+        components.host         = host
+        components.path         = path
+        components.queryItems   = queryComponents
         return components.url!
     }
     
