@@ -10,19 +10,14 @@ import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
-    private let baseURL: String = "https://api.github.com/"
     private let perPage: Int = 100
     let cache = NSCache<NSString, UIImage>()
     
     private init() {}
     
     func getFollwers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        let endPoint: String = baseURL + "users/\(username)/followers?per_page=\(perPage)&page=\(page)"
-        
-        guard let url = URL(string: endPoint) else {
-            completed(.failure(.invalidUsername))
-            return
-        }
+        let endPoint = GithubEndPoint.users(username: username, perPage: perPage, page: page)
+        let url = endPoint.url
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
