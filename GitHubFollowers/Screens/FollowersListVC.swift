@@ -17,6 +17,7 @@ class FollowersListVC: UIViewController {
     var username: String!
     var followers: [Follower]           = []
     var filteredFollowers: [Follower]   = []
+    var isSearching: Bool               = false
     var page: Int                       = 1
     var hasMoreFollowers: Bool          = true
     
@@ -123,10 +124,12 @@ extension FollowersListVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let follower = filteredFollowers.isEmpty ? followers[indexPath.item] : filteredFollowers[indexPath.item]
-        let userInfoVC = UserInfoVC()
-        userInfoVC.username = follower.login
-        present(userInfoVC, animated: true)
+        let activeArray = isSearching ? filteredFollowers : followers
+        let follower = activeArray[indexPath.item]
+        let destVC = UserInfoVC()
+        destVC.username = follower.login
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
     }
 }
 
@@ -134,17 +137,19 @@ extension FollowersListVC: UICollectionViewDelegate {
 extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
-        
-        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
-        
+        isSearching         = true
+        guard let filter    = searchController.searchBar.text, !filter.isEmpty else {
+            isSearching     = false
+            return
+        }
+        filteredFollowers   = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
-        
     }
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         updateData(on: followers)
+        isSearching         = true
     }
 }
 
