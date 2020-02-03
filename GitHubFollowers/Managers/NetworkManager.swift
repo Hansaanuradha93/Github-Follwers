@@ -16,8 +16,8 @@ class NetworkManager {
     private init() {}
     
     func getFollwers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        let endPoint = GithubEndPoint.users(username: username, perPage: perPage, page: page)
-        let url = endPoint.url
+        let endPoint    = GithubEndPoint.followers(username: username, perPage: perPage, page: page)
+        let url         = endPoint.url
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -45,12 +45,46 @@ class NetworkManager {
             } catch {
                 completed(.failure(.invalidData))
             }
-            
-            
-            
         }
+        task.resume()
+    }
+    
+    
+    func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
+//        let endPoint    = GithubEndPoint.user(username: username)
+        let endPoint = "https://api.github.com/users/octocat"
+        guard let url = URL(string: endPoint) else { return }
+//        let url         = endPoint.url
         
-        task.resume() // Start the task
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let _ = error { // Error validation
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { // Response validation
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else { // Data validation
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            do { // Json Decoding
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let user = try decoder.decode(User.self, from: data)
+                
+                completed(.success(user))
+            } catch let error{
+                print("Error: \(error)")
+                completed(.failure(.invalidData))
+            }
+        }
+        task.resume()
     }
 }
 
