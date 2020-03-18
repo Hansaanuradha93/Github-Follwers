@@ -51,10 +51,8 @@ class NetworkManager {
     
     
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
-//        let endPoint    = GithubEndPoint.user(username: username)
-        let endPoint = "https://api.github.com/users/octocat"
-        guard let url = URL(string: endPoint) else { return }
-//        let url         = endPoint.url
+        let endPoint    = GithubEndPoint.user(username: username)
+        let url         = endPoint.url
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             

@@ -142,7 +142,7 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
             isSearching     = false
             return
         }
-        filteredFollowers   = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+        filteredFollowers   = followers.filter { ($0.login?.lowercased().contains(filter.lowercased()) ?? false) }
         updateData(on: filteredFollowers)
     }
     

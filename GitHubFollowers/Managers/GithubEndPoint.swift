@@ -58,7 +58,6 @@ enum GithubEndPoint {
     }
     
     var url: URL {
-//        var components = URLComponents(string: baseURL)!
         var components          = URLComponents()
         components.scheme       = scheme
         components.host         = host
