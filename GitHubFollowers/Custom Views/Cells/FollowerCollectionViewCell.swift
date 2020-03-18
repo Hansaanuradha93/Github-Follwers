@@ -1,11 +1,3 @@
-//
-//  FollowerCellCollectionViewCell.swift
-//  GitHubFollowers
-//
-//  Created by Hansa Anuradha on 1/6/20.
-//  Copyright © 2020 Hansa Anuradha. All rights reserved.
-//
-
 import UIKit
 
 class FollowerCollectionViewCell: UICollectionViewCell {

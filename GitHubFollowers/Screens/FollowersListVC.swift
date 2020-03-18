@@ -1,11 +1,3 @@
-//
-//  FollwersListViewController.swift
-//  GitHubFollowers
-//
-//  Created by Hansa Anuradha on 1/1/20.
-//  Copyright © 2020 Hansa Anuradha. All rights reserved.
-//
-
 import UIKit
 
 class FollowersListVC: UIViewController {
@@ -20,7 +12,6 @@ class FollowersListVC: UIViewController {
     var isSearching: Bool               = false
     var page: Int                       = 1
     var hasMoreFollowers: Bool          = true
-    
     var collectionView: UICollectionView!
     var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -77,9 +68,7 @@ class FollowersListVC: UIViewController {
                 self.followers.append(contentsOf: followers)
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them 😀"
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                    }
+                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
                     return
                 }
                 self.updateData(on: self.followers)

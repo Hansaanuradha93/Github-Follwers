@@ -1,11 +1,3 @@
-//
-//  GFAlertContainerView.swift
-//  GitHubFollowers
-//
-//  Created by Hansa Anuradha on 1/2/20.
-//  Copyright © 2020 Hansa Anuradha. All rights reserved.
-//
-
 import UIKit
 
 class GFAlertContainerView: UIView {
