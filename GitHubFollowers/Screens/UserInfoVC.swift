@@ -1,9 +1,11 @@
 import UIKit
 
 class UserInfoVC: UIViewController {
-
     
-    let headerView = UIView()
+    let headerView  = UIView()
+    let itemView1   = UIView()
+    let itemView2   = UIView()
+    
     var username: String!
     
     
@@ -63,14 +65,36 @@ class UserInfoVC: UIViewController {
     
     
     private func layoutUI() {
+        let padding: CGFloat    = 20
+        let itemHeight: CGFloat = 140
+        
         view.addSubview(headerView)
+        view.addSubview(itemView1)
+        view.addSubview(itemView2)
+
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        itemView1.translatesAutoresizingMaskIntoConstraints = false
+        itemView2.translatesAutoresizingMaskIntoConstraints = false
+        
+        itemView1.backgroundColor = .systemRed
+        itemView2.backgroundColor = .systemBlue
+
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemView1.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemView1.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            itemView2.topAnchor.constraint(equalTo: itemView1.bottomAnchor, constant: padding),
+            itemView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemView2.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
     }
     
