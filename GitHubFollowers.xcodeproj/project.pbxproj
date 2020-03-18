@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		47089B2D242268C700FA50EB /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47089B2C242268C700FA50EB /* GFUserInfoHeaderVC.swift */; };
 		47089B2F2422695D00FA50EB /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47089B2E2422695D00FA50EB /* GFSecondaryTitleLabel.swift */; };
+		47089B3124227C8A00FA50EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47089B3024227C8A00FA50EB /* Constants.swift */; };
 		47273A9C23D36AC300B1411E /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47273A9B23D36AC300B1411E /* UserInfoVC.swift */; };
 		472B218F23C95A520042419D /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472B218E23C95A520042419D /* UIHelper.swift */; };
 		4768D6FE23C2F53400D6F9FF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4768D6FD23C2F53400D6F9FF /* NetworkManager.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		47089B2C242268C700FA50EB /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		47089B2E2422695D00FA50EB /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		47089B3024227C8A00FA50EB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		47273A9B23D36AC300B1411E /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		472B218E23C95A520042419D /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		4768D6FD23C2F53400D6F9FF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				4768D70023C313A400D6F9FF /* ErrorMessages.swift */,
 				472B218E23C95A520042419D /* UIHelper.swift */,
+				47089B3024227C8A00FA50EB /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				4778FCC223BF44D500B0E55D /* UIViewController+Ext.swift in Sources */,
 				47089B2D242268C700FA50EB /* GFUserInfoHeaderVC.swift in Sources */,
 				47C41B8023BC73B700A94703 /* GFTextField.swift in Sources */,
+				47089B3124227C8A00FA50EB /* Constants.swift in Sources */,
 				4768D6FE23C2F53400D6F9FF /* NetworkManager.swift in Sources */,
 				47A3CDF523BA353E000A8E73 /* FavouriteListVC.swift in Sources */,
 				47B37E0823CC3C3100E02651 /* GithubEndPoint.swift in Sources */,
