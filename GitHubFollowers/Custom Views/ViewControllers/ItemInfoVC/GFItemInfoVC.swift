@@ -1,11 +1,25 @@
 import UIKit
 
-class GFInfoItemVC: UIViewController {
+class GFItemInfoVC: UIViewController {
 
     let stackView       = UIStackView()
     let itemInfoViewOne = GFItemView()
     let itemInfoViewTwo = GFItemView()
     let actionButton    = GFButton()
+    
+    
+    var user: User!
+    
+    
+    init(user: User) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func viewDidLoad() {
@@ -15,10 +29,12 @@ class GFInfoItemVC: UIViewController {
         configureStackView()
     }
     
+    
     private func configureBackground() {
         view.layer.cornerRadius     = 18
         view.backgroundColor        = .secondarySystemBackground
     }
+    
     
     private func configureStackView() {
         stackView.axis          = .horizontal
@@ -27,6 +43,7 @@ class GFInfoItemVC: UIViewController {
         stackView.addArrangedSubview(itemInfoViewOne)
         stackView.addArrangedSubview(itemInfoViewTwo)
     }
+    
     
     private func layoutUI() {
         view.addSubview(stackView)
