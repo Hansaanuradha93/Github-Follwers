@@ -1,5 +1,10 @@
 import UIKit
 
+enum ItemInfoType {
+    case repos, gists, followers, following
+}
+
+
 class GFItemView: UIView {
     let symbolImageView = UIImageView()
     let titleLabel      = GFTitleLabel(textAlignment: .left, fontSize: 14)
@@ -44,4 +49,22 @@ class GFItemView: UIView {
         ])
     }
     
+    
+    func setup(itemInfoType: ItemInfoType, withCount count: Int) {
+        switch itemInfoType {
+        case .repos:
+            symbolImageView.image   = UIImage(systemName: SFSymbols.repos)
+            titleLabel.text         = "Public Repos"
+        case .gists:
+            symbolImageView.image = UIImage(systemName: SFSymbols.gists)
+            titleLabel.text         = "Public Gists"
+        case .followers:
+            symbolImageView.image = UIImage(systemName: SFSymbols.followers)
+            titleLabel.text         = "Followers"
+        case .following:
+            symbolImageView.image = UIImage(systemName: SFSymbols.followings)
+            titleLabel.text         = "Following"
+        }
+        countLabel.text             = "\(count)"
+    }
 }
