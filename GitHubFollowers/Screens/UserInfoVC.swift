@@ -1,5 +1,11 @@
 import UIKit
 
+protocol UserInfoVCDelegate: class {
+    func didTapGitHubProfile()
+    func didTapGetFollowers()
+}
+
+
 class UserInfoVC: UIViewController {
     
     let headerView      = UIView()
@@ -51,12 +57,7 @@ class UserInfoVC: UIViewController {
             
             switch result {
             case .success(let user):
-                DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
-                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
-                    self.dateLabel.text = "GitHub since \(String(describing: user.createdAt?.convertToDisplayFormat()))"
-                }
+                DispatchQueue.main.async { self.configureUIElements(with: user) }
             
             case .failure(let error):
                 print(error)
@@ -65,6 +66,21 @@ class UserInfoVC: UIViewController {
         }
     }
     
+    
+    private func configureUIElements(with user: User) {
+        let  userInfoHeaderVC = GFUserInfoHeaderVC(user: user)
+        
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+        
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
+        
+        self.add(childVC: userInfoHeaderVC, to: self.headerView)
+        self.add(childVC: repoItemVC, to: self.itemViewOne)
+        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.dateLabel.text = "GitHub since \(String(describing: user.createdAt?.convertToDisplayFormat()))"
+    }
     
     private func layoutUI() {
         let padding: CGFloat    = 20
@@ -104,4 +120,18 @@ class UserInfoVC: UIViewController {
         childVC.didMove(toParent: self)
     }
 
+}
+
+extension UserInfoVC: UserInfoVCDelegate {
+    func didTapGitHubProfile() {
+        // Display user profile in Safari View Controller
+        print("didTapGitHubProfile")
+    }
+    
+    func didTapGetFollowers() {
+        // Dissmiss VC
+        // Tell the FollowerListVC the new user
+    }
+    
+    
 }
