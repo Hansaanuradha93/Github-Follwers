@@ -31,9 +31,9 @@ class NetworkManager {
             do { // Json Decoding
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let follwers = try decoder.decode([Follower].self, from: data)
+                let followers = try decoder.decode([Follower].self, from: data)
                 
-                completed(.success(follwers))
+                completed(.success(followers))
             } catch {
                 completed(.failure(.invalidData))
             }
