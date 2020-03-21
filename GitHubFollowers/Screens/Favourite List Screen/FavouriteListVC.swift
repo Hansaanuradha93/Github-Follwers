@@ -71,6 +71,24 @@ extension FavouriteListVC: UITableViewDataSource {
         cell.set(favourite: favourites[indexPath.row])
         return cell
     }
+ 
+}
+
+extension FavouriteListVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let favourite   = favourites[indexPath.row]
+        let destVC      = FollowersListVC()
+        destVC.username = favourite.login
+        destVC.title    = favourite.login
+        navigationController?.pushViewController(destVC, animated: true)
+    }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -84,26 +102,6 @@ extension FavouriteListVC: UITableViewDataSource {
             guard let error = error else { return }
             self.presentGFAlertOnMainTread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
         }
-    }
-    
-    
-    
-}
-
-extension FavouriteListVC: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let favourite   = favourites[indexPath.row]
-        let destVC      = FollowersListVC()
-        destVC.username = favourite.login
-        destVC.title    = favourite.login
-        navigationController?.pushViewController(destVC, animated: true)
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
     }
     
 }
