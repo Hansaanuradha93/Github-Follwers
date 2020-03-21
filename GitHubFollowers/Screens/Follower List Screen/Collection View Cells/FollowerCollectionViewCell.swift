@@ -12,8 +12,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureAvatarImageView()
-        configureUsernameLabel()
+        configure()
     }
     
     
@@ -26,27 +25,23 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         avatarImageView.downloadImage(from: follower.avatarUrl ?? "")
     }
     
-    private func configureAvatarImageView() {
+    private func configure() {
         addSubview(avatarImageView)
+        addSubview(usernameLabel)
+
     
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
-        ])
-        
-    }
-    
-    private func configureUsernameLabel() {
-        addSubview(usernameLabel)
-        
-        NSLayoutConstraint.activate([
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
+            
             usernameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
             usernameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             usernameLabel.widthAnchor.constraint(equalTo: avatarImageView.widthAnchor),
             usernameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
+        
     }
     
 }
