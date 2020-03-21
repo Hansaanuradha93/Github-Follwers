@@ -50,7 +50,7 @@ class FavouriteListVC: UIViewController {
     }
 }
 
-extension FavouriteListVC: UITableViewDataSource, UITableViewDelegate {
+extension FavouriteListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favourites.count
@@ -64,7 +64,17 @@ extension FavouriteListVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     
+    
+}
+
+extension FavouriteListVC: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Item selected")
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
+    }
+    
 }
