@@ -31,10 +31,18 @@ class FavouriteListVC: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let favourites):
+                if favourites.isEmpty {
+                    let message = "No favourites?\nGo follow a user from follower screen 😀"
+                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+                    return
+                }
                 self.favourites = favourites
-                DispatchQueue.main.async { self.tableView.reloadData() }
+                DispatchQueue.main.async {
+                    self.view.bringSubviewToFront(self.tableView)
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
-                print("Persistence error: \(error.rawValue)")
+                self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
@@ -44,6 +52,7 @@ class FavouriteListVC: UIViewController {
         tableView                   = UITableView(frame: view.bounds, style: .plain)
         view.addSubview(tableView)
         tableView.backgroundColor   = .systemBackground
+        tableView.separatorStyle    = .none
         tableView.dataSource        = self
         tableView.delegate          = self
         tableView.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.reuseID)
