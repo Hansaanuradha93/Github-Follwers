@@ -57,7 +57,7 @@ class FollowersListVC: UIViewController {
     private func configureSearchViewController() {
         let searchViewController                                    = UISearchController()
         searchViewController.searchResultsUpdater                   = self
-        searchViewController.searchBar.delegate                      = self
+        searchViewController.searchBar.delegate                     = self
         searchViewController.searchBar.placeholder                  = "Search for a username"
         searchViewController.obscuresBackgroundDuringPresentation   = false
         navigationItem.searchController                             = searchViewController
@@ -106,7 +106,26 @@ class FollowersListVC: UIViewController {
     
     
     @objc func addFavourite() {
-        print("Add button tapped")
+        self.showLoadingView()
+        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            switch result {
+            case .success(let user):
+                let favourite       = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self ] error in
+                    guard let self  = self else { return }
+                    guard let error = error else {
+                        self.presentGFAlertOnMainTread(title: "Success!", message: "You have successfully favourited this user 🎉", buttonTitle: "Ok")
+                        return
+                    }
+                    self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                }
+                
+            case .failure(let error):
+                self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
 
 }
