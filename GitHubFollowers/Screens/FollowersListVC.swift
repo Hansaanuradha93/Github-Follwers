@@ -47,7 +47,7 @@ class FollowersListVC: UIViewController {
     
     
     private func configureViewController() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor                = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true // Get large titles
         let addButton                       = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavourite))
         navigationItem.rightBarButtonItem   = addButton
@@ -108,7 +108,7 @@ class FollowersListVC: UIViewController {
     @objc func addFavourite() {
         self.showLoadingView()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-            guard let self = self else { return }
+            guard let self          = self else { return }
             self.dismissLoadingView()
             switch result {
             case .success(let user):
@@ -145,11 +145,11 @@ extension FollowersListVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let activeArray = isSearching ? filteredFollowers : followers
-        let follower    = activeArray[indexPath.item]
-        let destVC      = UserInfoVC(username: follower.login ?? "")
-        destVC.delegate = self
-        let navController = UINavigationController(rootViewController: destVC)
+        let activeArray     = isSearching ? filteredFollowers : followers
+        let follower        = activeArray[indexPath.item]
+        let destVC          = UserInfoVC(username: follower.login ?? "")
+        destVC.delegate     = self
+        let navController   = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
     }
 }
