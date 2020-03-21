@@ -129,14 +129,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		4768D70323C33AF800D6F9FF /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4768D70423C33B2200D6F9FF /* FollowerCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		4768D70623C33BFE00D6F9FF /* Image Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +140,10 @@
 		4778FCC323BF50D400B0E55D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				47A3CDF223BA3511000A8E73 /* SearchVC.swift */,
-				47C41B8123BCB3AB00A94703 /* FollowersListVC.swift */,
-				47273A9B23D36AC300B1411E /* UserInfoVC.swift */,
-				47A3CDF423BA353E000A8E73 /* FavouriteListVC.swift */,
+				4791008B2426152500071A0D /* Search Screen */,
+				4791008C2426154100071A0D /* Follower List Screen */,
+				4791008D2426155800071A0D /* User Info Screen */,
+				4791008E2426156900071A0D /* Favourite List Screen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -166,18 +158,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4778FCC523BF515200B0E55D /* Custom Views */ = {
+		4778FCC523BF515200B0E55D /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
 				4778FCCA23BF527700B0E55D /* ViewControllers */,
-				4768D70623C33BFE00D6F9FF /* Image Views */,
-				4768D70323C33AF800D6F9FF /* Cells */,
 				4778FCC923BF51CA00B0E55D /* Views */,
+				4768D70623C33BFE00D6F9FF /* Image Views */,
 				4778FCC823BF51BB00B0E55D /* Text Fields */,
 				4778FCC723BF519F00B0E55D /* Labels */,
 				4778FCC623BF519000B0E55D /* Buttons */,
 			);
-			path = "Custom Views";
+			path = "Common Views";
 			sourceTree = "<group>";
 		};
 		4778FCC623BF519000B0E55D /* Buttons */ = {
@@ -219,9 +210,7 @@
 		4778FCCA23BF527700B0E55D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				47794C8C242354B3008EBDC3 /* ItemInfoVC */,
 				47C41B8923BCC76100A94703 /* GFAlertVC.swift */,
-				47089B2C242268C700FA50EB /* GFUserInfoHeaderVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -277,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				4778FCCD23BF61ED00B0E55D /* Model */,
-				4778FCC523BF515200B0E55D /* Custom Views */,
+				4778FCC523BF515200B0E55D /* Common Views */,
 				4778FCC323BF50D400B0E55D /* Screens */,
 				4768D6FC23C2F51D00D6F9FF /* Managers */,
 				4768D6FF23C3137400D6F9FF /* Utilities */,
@@ -285,6 +274,65 @@
 				4778FCCC23BF61C900B0E55D /* Support */,
 			);
 			path = GitHubFollowers;
+			sourceTree = "<group>";
+		};
+		4791008B2426152500071A0D /* Search Screen */ = {
+			isa = PBXGroup;
+			children = (
+				47A3CDF223BA3511000A8E73 /* SearchVC.swift */,
+			);
+			path = "Search Screen";
+			sourceTree = "<group>";
+		};
+		4791008C2426154100071A0D /* Follower List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				47910090242615D400071A0D /* Collection View Cells */,
+				47C41B8123BCB3AB00A94703 /* FollowersListVC.swift */,
+			);
+			path = "Follower List Screen";
+			sourceTree = "<group>";
+		};
+		4791008D2426155800071A0D /* User Info Screen */ = {
+			isa = PBXGroup;
+			children = (
+				479100912426160700071A0D /* Child VCs */,
+				47273A9B23D36AC300B1411E /* UserInfoVC.swift */,
+			);
+			path = "User Info Screen";
+			sourceTree = "<group>";
+		};
+		4791008E2426156900071A0D /* Favourite List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				4791008F242615BE00071A0D /* Table View Cells */,
+				47A3CDF423BA353E000A8E73 /* FavouriteListVC.swift */,
+			);
+			path = "Favourite List Screen";
+			sourceTree = "<group>";
+		};
+		4791008F242615BE00071A0D /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		47910090242615D400071A0D /* Collection View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4768D70423C33B2200D6F9FF /* FollowerCollectionViewCell.swift */,
+			);
+			path = "Collection View Cells";
+			sourceTree = "<group>";
+		};
+		479100912426160700071A0D /* Child VCs */ = {
+			isa = PBXGroup;
+			children = (
+				47089B2C242268C700FA50EB /* GFUserInfoHeaderVC.swift */,
+				47794C8C242354B3008EBDC3 /* ItemInfoVC */,
+			);
+			path = "Child VCs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
