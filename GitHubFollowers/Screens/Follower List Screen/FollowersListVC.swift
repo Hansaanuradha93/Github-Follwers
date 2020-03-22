@@ -6,7 +6,7 @@ protocol FollowerListVCDelegate: class {
 }
 
 
-class FollowersListVC: UIViewController {
+class FollowersListVC: DataLoadingVC {
 
     enum Section {
         case main

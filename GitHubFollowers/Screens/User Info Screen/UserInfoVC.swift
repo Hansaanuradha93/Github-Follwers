@@ -6,7 +6,7 @@ protocol UserInfoVCDelegate: class {
 }
 
 
-class UserInfoVC: UIViewController {
+class UserInfoVC: DataLoadingVC {
     
     private let headerView      = UIView()
     private let itemViewOne     = UIView()

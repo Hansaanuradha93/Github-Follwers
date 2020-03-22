@@ -1,6 +1,6 @@
 import UIKit
 
-class FavouriteListVC: UIViewController {
+class FavouriteListVC: DataLoadingVC {
 
     private var tableView: UITableView!
     private var dataSource: FavouriteDataSource!
