@@ -3,7 +3,6 @@ import UIKit
 class GFAvatarImageView: UIImageView {
     
     private let placeholderImage    = Images.placeHolder
-    let cache                       = NetworkManager.shared.cache
     
     
     override init(frame: CGRect) {

@@ -2,7 +2,7 @@ import UIKit
 
 class FavouriteTableViewCell: UITableViewCell {
 
-    static let reuseID  = "FavouriteCell"
+    static let reuseID          = "FavouriteCell"
     private let avatarImageView = GFAvatarImageView(frame: .zero)
     private let usernameLabel   = GFTitleLabel(textAlignment: .left, fontSize: 26)
     
@@ -20,8 +20,13 @@ class FavouriteTableViewCell: UITableViewCell {
     
     func set(favourite: Follower) {
         usernameLabel.text = favourite.login
+        downloadAvatarImage(from: favourite)
+    }
+    
+    
+    private func downloadAvatarImage(from favourite: Follower) {
         NetworkManager.shared.downloadImage(from: favourite.avatarUrl ?? "") { [weak self] image in
-            guard let self      = self else { return }
+            guard let self          = self else { return }
             DispatchQueue.main.async { self.avatarImageView.image = image }
         }
     }
