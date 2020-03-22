@@ -19,9 +19,7 @@ class FavouriteDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let favourite   = favourites[indexPath.row]
-        let destVC      = FollowersListVC()
-        destVC.username = favourite.login
-        destVC.title    = favourite.login
+        let destVC      = FollowersListVC(username: favourite.login ?? "")
         navigationController?.pushViewController(destVC, animated: true)
     }
 }
