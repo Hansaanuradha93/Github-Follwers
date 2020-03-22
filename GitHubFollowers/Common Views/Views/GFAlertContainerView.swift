@@ -11,10 +11,6 @@ class GFAlertContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init() {
-        super.init(frame: .zero)
-        configure()
-    }
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
