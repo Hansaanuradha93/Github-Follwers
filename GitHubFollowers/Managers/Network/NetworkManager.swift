@@ -31,10 +31,9 @@ class NetworkManager {
             }
             
             do { // Json Decoding
-                let decoder = JSONDecoder()
+                let decoder                 = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let followers = try decoder.decode([Follower].self, from: data)
-                
+                let followers               = try decoder.decode([Follower].self, from: data)
                 completed(.success(followers))
             } catch {
                 completed(.failure(.invalidData))
@@ -66,10 +65,10 @@ class NetworkManager {
             }
             
             do { // Json Decoding
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let user = try decoder.decode(User.self, from: data)
-                
+                let decoder                     = JSONDecoder()
+                decoder.keyDecodingStrategy     = .convertFromSnakeCase
+                decoder.dateDecodingStrategy    = .iso8601
+                let user                        = try decoder.decode(User.self, from: data)
                 completed(.success(user))
             } catch let error{
                 print("Error: \(error)")

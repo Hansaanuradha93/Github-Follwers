@@ -71,16 +71,17 @@ class UserInfoVC: UIViewController {
     private func configureUIElements(with user: User) {
         let  userInfoHeaderVC = GFUserInfoHeaderVC(user: user)
         
-        let repoItemVC = GFRepoItemVC(user: user)
-        repoItemVC.delegate = self
+        let repoItemVC          = GFRepoItemVC(user: user)
+        repoItemVC.delegate     = self
         
-        let followerItemVC = GFFollowerItemVC(user: user)
+        let followerItemVC      = GFFollowerItemVC(user: user)
         followerItemVC.delegate = self
         
         self.add(childVC: userInfoHeaderVC, to: self.headerView)
         self.add(childVC: repoItemVC, to: self.itemViewOne)
         self.add(childVC: followerItemVC, to: self.itemViewTwo)
-        self.dateLabel.text = "GitHub since \(String(describing: user.createdAt?.convertToDisplayFormat()))"
+        let createdAt           = user.createdAt ?? Date()
+        self.dateLabel.text     = "GitHub since \(String(describing: createdAt.convertToMonthYearFormat()))"
     }
     
     private func layoutUI() {
