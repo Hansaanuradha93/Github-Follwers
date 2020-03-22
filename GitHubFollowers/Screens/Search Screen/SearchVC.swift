@@ -26,7 +26,7 @@ class SearchVC: UIViewController {
     
     
     func createTapGesture() {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
@@ -49,7 +49,7 @@ class SearchVC: UIViewController {
         view.addSubview(callToActionButton)
 
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")
+        logoImageView.image = Images.ghLogo
         
         usernameTextField.delegate = self
 
