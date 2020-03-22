@@ -36,6 +36,7 @@ class SearchVC: UIViewController {
             presentGFAlertOnMainTread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀.", buttonTitle: "Ok")
             return
         }
+        usernameTextField.resignFirstResponder()
         let follwersListVC      = FollowersListVC()
         follwersListVC.username = usernameTextField.text
         follwersListVC.title    = usernameTextField.text
