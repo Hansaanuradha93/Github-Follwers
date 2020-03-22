@@ -17,7 +17,6 @@ enum PersistenceManager {
     
     
     static func updateWith(favourite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
-        
         retrieveFavourites { result in
             switch result {
             case .success(var retrievedFavourites):
@@ -44,7 +43,6 @@ enum PersistenceManager {
     
     
     static func retrieveFavourites(completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        
         guard let favouritesData = defaults.object(forKey: Keys.favourites) as? Data else {
             completed(.success([]))
             return

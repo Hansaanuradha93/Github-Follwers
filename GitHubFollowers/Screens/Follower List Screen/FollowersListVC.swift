@@ -12,14 +12,14 @@ class FollowersListVC: UIViewController {
         case main
     }
     
-    var username: String!
-    var followers: [Follower]           = []
-    var filteredFollowers: [Follower]   = []
-    var isSearching: Bool               = false
-    var page: Int                       = 1
-    var hasMoreFollowers: Bool          = true
-    var collectionView: UICollectionView!
-    var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
+    private var username: String!
+    private var followers: [Follower]           = []
+    private var filteredFollowers: [Follower]   = []
+    private var isSearching: Bool               = false
+    private var page: Int                       = 1
+    private var hasMoreFollowers: Bool          = true
+    private var collectionView: UICollectionView!
+    private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     
     init(username: String) {
         super.init(nibName: nil, bundle: nil)

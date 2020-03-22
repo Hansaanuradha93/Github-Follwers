@@ -11,6 +11,11 @@ enum SFSymbols {
 
 enum Images {
     static let ghLogo       = UIImage(named: "gh-logo")
+    static let placeHolder  = UIImage(named: "avatar-placeholder")
+    static let repos        = UIImage(systemName: SFSymbols.repos)
+    static let gists        = UIImage(systemName: SFSymbols.gists)
+    static let followers    = UIImage(systemName: SFSymbols.followers)
+    static let followings   = UIImage(systemName: SFSymbols.followings)
 }
 
 

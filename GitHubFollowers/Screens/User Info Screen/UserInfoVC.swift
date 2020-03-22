@@ -8,13 +8,13 @@ protocol UserInfoVCDelegate: class {
 
 class UserInfoVC: UIViewController {
     
-    let headerView      = UIView()
-    let itemViewOne     = UIView()
-    let itemViewTwo     = UIView()
-    let dateLabel       = GFBodyLabel(textAlignment: .center)
-    var itemViews       = [UIView]()
+    private let headerView      = UIView()
+    private let itemViewOne     = UIView()
+    private let itemViewTwo     = UIView()
+    private let dateLabel       = GFBodyLabel(textAlignment: .center)
+    private var itemViews       = [UIView]()
     
-    var username: String!
+    private var username: String!
     weak var delegate: FollowerListVCDelegate!
     
     

@@ -2,10 +2,10 @@ import UIKit
 
 class FavouriteListVC: UIViewController {
 
-    var tableView: UITableView!
-    var dataSource: FavouriteDataSource!
+    private var tableView: UITableView!
+    private var dataSource: FavouriteDataSource!
     var delegate: FavouriteDelegate!
-    var favourites: [Follower] = []
+    private var favourites: [Follower] = []
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +59,7 @@ class FavouriteListVC: UIViewController {
 
         tableView.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.reuseID)
     }
+    
     
     private func setDataSourceAndDelegate(with favourites: [Follower]) {
         dataSource             = FavouriteDataSource(favourites: favourites, viewController: self)

@@ -16,8 +16,8 @@ extension String {
 
 
     var isValidPhoneNumber: Bool {
-        let phoneNumberFormat = "^\\d{3}-\\d{3}-\\d{4}$"
-        let numberPredicate = NSPredicate(format: "SELF MATCHES %@", phoneNumberFormat)
+        let phoneNumberFormat   = "^\\d{3}-\\d{3}-\\d{4}$"
+        let numberPredicate     = NSPredicate(format: "SELF MATCHES %@", phoneNumberFormat)
         return numberPredicate.evaluate(with: self)
     }
 
@@ -26,6 +26,7 @@ extension String {
         return components(separatedBy: .whitespaces).joined()
     }
     
+    
     func convertToDate() -> Date? {
         let dateFormatter           = DateFormatter()
         dateFormatter.dateFormat    = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -33,6 +34,7 @@ extension String {
         dateFormatter.timeZone      = .current
         return dateFormatter.date(from: self)
     }
+    
     
     func convertToDisplayFormat() -> String {
         guard let date = self.convertToDate() else { return "N/A"}

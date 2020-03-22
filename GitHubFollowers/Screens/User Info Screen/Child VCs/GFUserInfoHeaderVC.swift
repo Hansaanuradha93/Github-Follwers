@@ -2,12 +2,12 @@ import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
 
-    let avatarImageView         = GFAvatarImageView(frame: .zero)
-    let usernameLabel           = GFTitleLabel(textAlignment: .left, fontSize: 34)
-    let nameLabel               = GFSecondaryTitleLabel(fontSize: 18)
-    let locationImageView       = UIImageView()
-    let locationLabel           = GFSecondaryTitleLabel(fontSize: 18)
-    let bioLabel                = GFBodyLabel(textAlignment: .left)
+    private let avatarImageView         = GFAvatarImageView(frame: .zero)
+    private let usernameLabel           = GFTitleLabel(textAlignment: .left, fontSize: 34)
+    private let nameLabel               = GFSecondaryTitleLabel(fontSize: 18)
+    private let locationImageView       = UIImageView()
+    private let locationLabel           = GFSecondaryTitleLabel(fontSize: 18)
+    private let bioLabel                = GFBodyLabel(textAlignment: .left)
     
     
     var user: User!

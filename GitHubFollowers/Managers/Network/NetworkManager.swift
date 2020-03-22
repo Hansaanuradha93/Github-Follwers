@@ -1,11 +1,13 @@
 import UIKit
 
 class NetworkManager {
-    static let shared = NetworkManager()
-    private let perPage: Int = 100
-    let cache = NSCache<NSString, UIImage>()
+    static let shared           = NetworkManager()
+    private let perPage: Int    = 100
+    let cache                   = NSCache<NSString, UIImage>()
+    
     
     private init() {}
+    
     
     func getFollwers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         let endPoint    = GithubEndPoint.followers(username: username, perPage: perPage, page: page)

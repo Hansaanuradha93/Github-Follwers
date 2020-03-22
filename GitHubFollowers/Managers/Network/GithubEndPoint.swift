@@ -1,22 +1,23 @@
 import Foundation
 
 enum GithubEndPoint {
-//    https://api.github.com/users/SAllen0400/followers?per_page=100&page=1 // List of followers
-//    https://api.github.com/users/octocat // Single user
     
     // Cases
     case followers(username: String, perPage: Int, page: Int)
     case user(username: String)
+    
     
     // Scheme
     private var scheme: String {
         return "https"
     }
     
+    
     // Host
     private var host: String {
         return "api.github.com"
     }
+    
     
     // Path
     private var path: String {
@@ -25,6 +26,7 @@ enum GithubEndPoint {
         case .user(let username): return "/users/\(username)"
         }
     }
+    
     
     // Parameters
     private var parameters: [String : Any] {
@@ -38,7 +40,8 @@ enum GithubEndPoint {
         case .user( _): return ["":""]
         }
     }
-        
+      
+    
     // Query Components
     private var queryComponents: [URLQueryItem] {
         var components      = [URLQueryItem]()
@@ -49,6 +52,7 @@ enum GithubEndPoint {
         return components
     }
     
+    
     var url: URL {
         var components          = URLComponents()
         components.scheme       = scheme
@@ -57,7 +61,6 @@ enum GithubEndPoint {
         components.queryItems   = queryComponents
         return components.url!
     }
-    
 }
 
 

@@ -5,11 +5,13 @@ class FavouriteDataSource: NSObject, UITableViewDataSource {
     private var favourites: [Follower]
     private var viewController: UIViewController
     
+    
     init(favourites: [Follower], viewController: UIViewController) {
         self.favourites     = favourites
         self.viewController = viewController
         super.init()
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favourites.count
@@ -21,6 +23,7 @@ class FavouriteDataSource: NSObject, UITableViewDataSource {
         cell.set(favourite: favourites[indexPath.row])
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }

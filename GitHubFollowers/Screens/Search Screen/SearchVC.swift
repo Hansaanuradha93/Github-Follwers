@@ -2,11 +2,11 @@ import UIKit
 
 class SearchVC: UIViewController {
 
-    let logoImageView       = UIImageView()
-    let usernameTextField   = GFTextField()
-    let callToActionButton  = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
-    var isUsernameEntered: Bool { return  !usernameTextField.text!.isEmpty }
-    var logoImageTopConstraint: NSLayoutConstraint!
+    private let logoImageView       = UIImageView()
+    private let usernameTextField   = GFTextField()
+    private let callToActionButton  = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
+    private var isUsernameEntered: Bool { return  !usernameTextField.text!.isEmpty }
+    private var logoImageTopConstraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
