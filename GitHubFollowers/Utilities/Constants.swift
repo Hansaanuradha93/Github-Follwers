@@ -16,6 +16,7 @@ enum Images {
     static let gists        = UIImage(systemName: SFSymbols.gists)
     static let followers    = UIImage(systemName: SFSymbols.followers)
     static let followings   = UIImage(systemName: SFSymbols.followings)
+    static let location     = UIImage(systemName: SFSymbols.location)
 }
 
 
