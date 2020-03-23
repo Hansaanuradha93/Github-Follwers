@@ -131,8 +131,8 @@
 		4768D6FC23C2F51D00D6F9FF /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				474C5D69242485B700198D63 /* Persistence */,
 				474C5D682424859D00198D63 /* Network */,
+				474C5D69242485B700198D63 /* Persistence */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
