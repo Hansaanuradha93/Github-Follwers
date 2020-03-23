@@ -14,15 +14,15 @@ class DataLoadingVC: UIViewController {
         containerView.backgroundColor   = .systemBackground
         containerView.alpha             = 0
         
-        UIView.animate(withDuration: 0.25) { self.containerView.alpha         = 0.9 }
+        UIView.animate(withDuration: 0.25) { self.containerView.alpha = 0.9 }
         
         let activityIndicator           = UIActivityIndicatorView(style: .large)
         containerView.addSubview(activityIndicator)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
         
         activityIndicator.startAnimating()

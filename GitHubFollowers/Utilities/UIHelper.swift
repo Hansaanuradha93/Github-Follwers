@@ -1,6 +1,6 @@
 import UIKit
 
-struct UIHelper {
+enum UIHelper {
     
     static func createCollectionViewFlowLayout(in view: UIView, for columns: CGFloat) -> UICollectionViewFlowLayout {
         let collectionViewWidth                 = view.bounds.width
