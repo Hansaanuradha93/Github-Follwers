@@ -93,10 +93,15 @@ extension FollowersListVC {
     private func getFollowers(username: String, page: Int) {
         self.showLoadingView()
         self.addButton.isEnabled = false
+        self.navigationItem.searchController?.searchBar.isHidden = true
+
         NetworkManager.shared.getFollwers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
-            DispatchQueue.main.async { self.addButton.isEnabled = true }
+            DispatchQueue.main.async {
+                self.addButton.isEnabled = true
+                self.navigationItem.searchController?.searchBar.isHidden = false
+            }
             
             switch result {
             case .success(let followers):
