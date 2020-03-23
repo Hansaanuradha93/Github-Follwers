@@ -2,6 +2,7 @@ import UIKit
 
 class GFBodyLabel: UILabel {
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -17,7 +18,11 @@ class GFBodyLabel: UILabel {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
     }
-   
+}
+
+
+// MARK: - Private Methods
+extension GFBodyLabel {
     
     private func configure() {
         textColor                   = .secondaryLabel
@@ -27,5 +32,4 @@ class GFBodyLabel: UILabel {
         lineBreakMode               = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
 }

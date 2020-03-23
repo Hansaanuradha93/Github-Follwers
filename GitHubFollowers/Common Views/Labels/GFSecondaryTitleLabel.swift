@@ -2,6 +2,7 @@ import UIKit
 
 class GFSecondaryTitleLabel: UILabel {
 
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -15,6 +16,11 @@ class GFSecondaryTitleLabel: UILabel {
         self.init(frame: .zero)
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
     }
+}
+
+
+// MARK: - Private Methods
+extension GFSecondaryTitleLabel {
     
     private func configure() {
         textColor                   = .secondaryLabel
@@ -23,5 +29,4 @@ class GFSecondaryTitleLabel: UILabel {
         lineBreakMode               = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
 }

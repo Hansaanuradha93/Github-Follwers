@@ -1,7 +1,8 @@
 import UIKit
 
 class GFAlertVC: UIViewController {
-
+    
+    // MARK: - Properties
     private let containerView   = GFAlertContainerView()
     private let titleLabel      = GFTitleLabel(textAlignment: .center, fontSize: 20)
     private let messageLabel    = GFBodyLabel(textAlignment: .center)
@@ -13,6 +14,7 @@ class GFAlertVC: UIViewController {
     private let padding: CGFloat = 20
     
     
+    // MARK: - Initializers
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle     = title
@@ -26,6 +28,7 @@ class GFAlertVC: UIViewController {
     }
     
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -34,7 +37,11 @@ class GFAlertVC: UIViewController {
         configureActionButtonn()
         configureMessageLabel()
     }
-    
+}
+
+
+// MARK: - Private Methods
+extension GFAlertVC {
     
     private func configureViewController() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
@@ -98,5 +105,4 @@ class GFAlertVC: UIViewController {
     @objc func dismissAlert() {
         dismiss(animated: true, completion: nil)
     }
-
 }
