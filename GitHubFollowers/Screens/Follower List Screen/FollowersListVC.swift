@@ -101,7 +101,10 @@ extension FollowersListVC {
                 self.followers.append(contentsOf: followers)
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them 😀"
-                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                        self.navigationItem.searchController?.searchBar.isHidden = true
+                    }
                     return
                 }
                 self.updateData(on: self.followers)
@@ -170,7 +173,7 @@ extension FollowersListVC: UICollectionViewDelegate {
 }
 
 
-// MARK: -ScrollView
+// MARK: - ScrollView
 extension FollowersListVC {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
