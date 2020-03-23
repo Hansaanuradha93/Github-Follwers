@@ -18,6 +18,7 @@ class FollowersListVC: DataLoadingVC {
     private var isSearching: Bool               = false
     private var page: Int                       = 1
     private var hasMoreFollowers: Bool          = true
+    private var lastScrollPosition: CGFloat     = 0
     private var collectionView: UICollectionView!
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -144,6 +145,34 @@ class FollowersListVC: DataLoadingVC {
 
 
 extension FollowersListVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray     = isSearching ? filteredFollowers : followers
+        let follower        = activeArray[indexPath.item]
+        let destVC          = UserInfoVC(username: follower.login ?? "")
+        destVC.delegate     = self
+        let navController   = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
+    }
+}
+
+
+extension FollowersListVC {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastScrollPosition = scrollView.contentOffset.y
+    }
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if lastScrollPosition < scrollView.contentOffset.y {
+            navigationItem.hidesSearchBarWhenScrolling = true
+        } else if lastScrollPosition > scrollView.contentOffset.y {
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
+    }
+    
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY         = scrollView.contentOffset.y
         let contentHeight   =  scrollView.contentSize.height
@@ -154,15 +183,6 @@ extension FollowersListVC: UICollectionViewDelegate {
             page += 1
             getFollowers(username: username, page: page)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let activeArray     = isSearching ? filteredFollowers : followers
-        let follower        = activeArray[indexPath.item]
-        let destVC          = UserInfoVC(username: follower.login ?? "")
-        destVC.delegate     = self
-        let navController   = UINavigationController(rootViewController: destVC)
-        present(navController, animated: true)
     }
 }
 
