@@ -36,12 +36,14 @@ extension GFEmptyStateView {
         messageLabel.textColor      = .secondaryLabel
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -100 : -150
+        let topConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -100  : -150
+        let padding: CGFloat                = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20    : 40
+
 
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: topConstraintConstant),
-            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             messageLabel.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
@@ -52,11 +54,14 @@ extension GFEmptyStateView {
         logoImageView.image = Images.emptyState
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
+        let bottomConstraintConstant: CGFloat   = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50  : 40
+        let padding: CGFloat                    = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 150 : 170
+        
         NSLayoutConstraint.activate([
             logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
             logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 170),
-            logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 40)
+            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: padding),
+            logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomConstraintConstant)
         ])
     }
 }
