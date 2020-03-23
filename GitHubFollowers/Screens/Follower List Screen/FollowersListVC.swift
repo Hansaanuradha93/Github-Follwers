@@ -20,6 +20,7 @@ class FollowersListVC: DataLoadingVC {
     private var isSearching: Bool               = false
     private var page: Int                       = 1
     private var hasMoreFollowers: Bool          = true
+    private var isLoadingFollowers: Bool        = false
     private var lastScrollPosition: CGFloat     = 0
     private var collectionView: UICollectionView!
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -121,6 +122,8 @@ extension FollowersListVC {
                 self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
                 
             }
+            
+            self.isLoadingFollowers = true
         }
     }
     
@@ -211,7 +214,7 @@ extension FollowersListVC {
         let height          = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {   // Has scrolled to the bottom
-            guard hasMoreFollowers else { return }
+            guard hasMoreFollowers, !isLoadingFollowers else { return }
             page += 1
             getFollowers(username: username, page: page)
         }
