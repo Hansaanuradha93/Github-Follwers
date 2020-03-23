@@ -1,17 +1,23 @@
 import UIKit
 
-class FavouriteDataSource: NSObject, UITableViewDataSource {
+class FavouriteDataSource: NSObject {
 
+    // MARK: - Properties
     private var favourites: [Follower]
     private var viewController: UIViewController
     
     
+    // MARK: - Initializers
     init(favourites: [Follower], viewController: UIViewController) {
         self.favourites     = favourites
         self.viewController = viewController
         super.init()
     }
     
+}
+
+//MARK: - TableView DataSource
+extension FavouriteDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favourites.count
@@ -37,5 +43,4 @@ class FavouriteDataSource: NSObject, UITableViewDataSource {
             self.viewController.presentGFAlertOnMainTread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
         }
     }
-    
 }

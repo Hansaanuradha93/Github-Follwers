@@ -2,6 +2,7 @@ import UIKit
 
 class GFButton: UIButton {
 
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -18,19 +19,23 @@ class GFButton: UIButton {
         self.setTitle(title, for: .normal)
         self.backgroundColor    = backgroundColor
     }
-   
+}
+
+
+// MARK: - Private Methods
+extension GFButton {
+    
+    func setup(backgroundColor: UIColor, title: String) {
+        self.setTitle(title, for: .normal)
+        self.backgroundColor = backgroundColor
+    }
+    
     
     private func configure() {
         layer.cornerRadius      = 10
         titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
         setTitleColor(.white, for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    
-    func setup(backgroundColor: UIColor, title: String) {
-        self.setTitle(title, for: .normal)
-        self.backgroundColor = backgroundColor
     }
 }
 

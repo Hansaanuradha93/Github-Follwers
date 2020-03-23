@@ -1,13 +1,21 @@
 import UIKit
 
 class NetworkManager {
+    
+    // MARK: - Properties
     static let shared           = NetworkManager()
     private let perPage: Int    = 100
     let cache                   = NSCache<NSString, UIImage>()
     
     
+    // MARK: - Initializers
     private init() {}
     
+}
+
+
+// MARK: - Methods
+extension NetworkManager {
     
     func getFollwers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         let endPoint    = GithubEndPoint.followers(username: username, perPage: perPage, page: page)
@@ -108,7 +116,6 @@ class NetworkManager {
         task.resume()
     }
 }
-
 
 
 

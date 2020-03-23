@@ -2,9 +2,11 @@ import UIKit
 
 class DataLoadingVC: UIViewController {
     
+    // MARK: - Properties
     private  var containerView: UIView!
 
     
+    // MARK: - Methods
     func showLoadingView() {
         containerView                   = UIView(frame: view.bounds)
         view.addSubview(containerView)

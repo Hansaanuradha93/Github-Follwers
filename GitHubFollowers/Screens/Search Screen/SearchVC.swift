@@ -2,6 +2,7 @@ import UIKit
 
 class SearchVC: UIViewController {
 
+    // MARK: - Properties
     private let logoImageView       = UIImageView()
     private let usernameTextField   = GFTextField()
     private let callToActionButton  = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
@@ -9,6 +10,7 @@ class SearchVC: UIViewController {
     private var logoImageTopConstraint: NSLayoutConstraint!
     
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -23,9 +25,13 @@ class SearchVC: UIViewController {
         usernameTextField.text = ""
         view.endEditing(true)
     }
+}
+
+
+// MARK: - Private Methods
+extension SearchVC {
     
-    
-    func createTapGesture() {
+    private func createTapGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
@@ -42,7 +48,7 @@ class SearchVC: UIViewController {
     }
     
     
-    func configureUIElements() {
+    private func configureUIElements() {
         view.addSubview(logoImageView)
         view.addSubview(usernameTextField)
         view.addSubview(callToActionButton)
@@ -74,9 +80,11 @@ class SearchVC: UIViewController {
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
 }
 
 
+// MARK: - UITextField Delegate
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollwersViewController()

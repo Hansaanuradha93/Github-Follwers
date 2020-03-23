@@ -1,16 +1,20 @@
 import UIKit
 
+// MARK: - Enums
 enum ItemInfoType {
     case repos, gists, followers, following
 }
 
 
 class GFItemView: UIView {
+    
+    // MARK: - Properties
     private let symbolImageView = UIImageView()
     private let titleLabel      = GFTitleLabel(textAlignment: .left, fontSize: 14)
     private let countLabel      = GFTitleLabel(textAlignment: .center, fontSize: 14)
     
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -19,6 +23,30 @@ class GFItemView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    } 
+}
+
+
+// MARK: - Private Methods
+
+extension GFItemView {
+    
+    func setup(itemInfoType: ItemInfoType, withCount count: Int) {
+        switch itemInfoType {
+        case .repos:
+            symbolImageView.image   = Images.repos
+            titleLabel.text         = "Public Repos"
+        case .gists:
+            symbolImageView.image   = Images.gists
+            titleLabel.text         = "Public Gists"
+        case .followers:
+            symbolImageView.image   = Images.followers
+            titleLabel.text         = "Followers"
+        case .following:
+            symbolImageView.image   = Images.followings
+            titleLabel.text         = "Following"
+        }
+        countLabel.text             = "\(count)"
     }
     
     
@@ -47,24 +75,5 @@ class GFItemView: UIView {
             countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             countLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
-    }
-    
-    
-    func setup(itemInfoType: ItemInfoType, withCount count: Int) {
-        switch itemInfoType {
-        case .repos:
-            symbolImageView.image   = Images.repos
-            titleLabel.text         = "Public Repos"
-        case .gists:
-            symbolImageView.image   = Images.gists
-            titleLabel.text         = "Public Gists"
-        case .followers:
-            symbolImageView.image   = Images.followers
-            titleLabel.text         = "Followers"
-        case .following:
-            symbolImageView.image   = Images.followings
-            titleLabel.text         = "Following"
-        }
-        countLabel.text             = "\(count)"
     }
 }

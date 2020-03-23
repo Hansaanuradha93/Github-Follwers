@@ -8,16 +8,17 @@ protocol UserInfoVCDelegate: class {
 
 class UserInfoVC: DataLoadingVC {
     
+    // MARK: - Properties
     private let headerView      = UIView()
     private let itemViewOne     = UIView()
     private let itemViewTwo     = UIView()
     private let dateLabel       = GFBodyLabel(textAlignment: .center)
     private var itemViews       = [UIView]()
-    
     private var username: String!
     weak var delegate: FollowerListVCDelegate!
     
     
+    // MARK: - Initializers
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username = username
@@ -29,13 +30,18 @@ class UserInfoVC: DataLoadingVC {
     }
     
     
+    // MARK: - View Conrtoller
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         layoutUI()
         getUserInfo(username: username)
     }
-    
+}
+
+
+// MARK: - Private Methods
+extension UserInfoVC {
     
     private func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -84,6 +90,7 @@ class UserInfoVC: DataLoadingVC {
         self.dateLabel.text     = "GitHub since \(String(describing: createdAt.convertToMonthYearFormat()))"
     }
     
+    
     private func layoutUI() {
         let padding: CGFloat    = 20
         let itemHeight: CGFloat = 140
@@ -124,6 +131,7 @@ class UserInfoVC: DataLoadingVC {
 
 }
 
+// MARK: - UserInfoVCDelegate
 extension UserInfoVC: UserInfoVCDelegate {
     
     func didTapGitHubProfile(for user: User) {
@@ -143,6 +151,4 @@ extension UserInfoVC: UserInfoVCDelegate {
         delegate.didRequestForFollowers(for: user.login ?? "")
         dismissVC()
     }
-    
-    
 }

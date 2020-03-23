@@ -2,11 +2,13 @@ import UIKit
 
 class FavouriteTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
     static let reuseID          = "FavouriteCell"
     private let avatarImageView = GFAvatarImageView(frame: .zero)
     private let usernameLabel   = GFTitleLabel(textAlignment: .left, fontSize: 26)
     
     
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
@@ -16,7 +18,12 @@ class FavouriteTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+}
+
+
+// MARK: - Private Methods
+extension FavouriteTableViewCell {
     
     func set(favourite: Follower) {
         usernameLabel.text = favourite.login

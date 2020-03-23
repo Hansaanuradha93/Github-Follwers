@@ -2,12 +2,14 @@ import UIKit
 
 class FavouriteListVC: DataLoadingVC {
 
+    // MARK: - Properties
     private var tableView: UITableView!
     private var dataSource: FavouriteDataSource!
     var delegate: FavouriteDelegate!
     private var favourites: [Follower] = []
 
     
+    // MARK: - View Controller
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getFavourites()
@@ -20,6 +22,13 @@ class FavouriteListVC: DataLoadingVC {
         configureTableView()
     }
     
+    
+    
+}
+
+
+// MARK: - Private Methods
+extension FavouriteListVC {
     
     private func configureViewController() {
         view.backgroundColor                = .systemBackground
@@ -53,10 +62,9 @@ class FavouriteListVC: DataLoadingVC {
     
     private func configureTableView() {
         tableView                   = UITableView(frame: view.bounds, style: .plain)
-        view.addSubview(tableView)
         tableView.backgroundColor   = .systemBackground
         tableView.separatorStyle    = .none
-
+        view.addSubview(tableView)
         tableView.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.reuseID)
     }
     
@@ -68,4 +76,3 @@ class FavouriteListVC: DataLoadingVC {
         tableView.delegate     = delegate
     }
 }
-

@@ -2,10 +2,12 @@ import UIKit
 
 class GFEmptyStateView: UIView {
 
+    // MARK: - Properties
     private let messageLabel            = GFTitleLabel(textAlignment: .center, fontSize: 28)
     private let logoImageView           = UIImageView()
     
     
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureMessageLabel()
@@ -22,7 +24,11 @@ class GFEmptyStateView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+
+// MARK: - Private Methods
+extension GFEmptyStateView {
     
     private func configureMessageLabel() {
         addSubview(messageLabel)
