@@ -133,6 +133,13 @@ extension FollowersListVC {
     }
     
     
+    private func stopSearching() {
+        updateData(on: followers)
+        filteredFollowers.removeAll()
+        isSearching     = false
+    }
+    
+    
     @objc func addFavourite() {
         self.showLoadingView()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
@@ -210,9 +217,7 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         isSearching         = true
         guard let filter    = searchController.searchBar.text, !filter.isEmpty else {
-            updateData(on: followers)
-            filteredFollowers.removeAll()
-            isSearching     = false
+            stopSearching()
             return
         }
         filteredFollowers   = followers.filter { ($0.login?.lowercased().contains(filter.lowercased()) ?? false) }
@@ -220,9 +225,8 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
     
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        updateData(on: followers)
-        isSearching         = true
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" { stopSearching() }
     }
 }
 
