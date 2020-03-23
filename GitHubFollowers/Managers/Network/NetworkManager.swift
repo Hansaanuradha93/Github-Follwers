@@ -1,6 +1,7 @@
 import UIKit
 
 class NetworkManager {
+    
     // MARK: - Properties
     static let shared           = NetworkManager()
     private let perPage: Int    = 100
