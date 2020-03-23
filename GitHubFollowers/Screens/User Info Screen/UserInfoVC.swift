@@ -15,7 +15,7 @@ class UserInfoVC: DataLoadingVC {
     private let dateLabel       = GFBodyLabel(textAlignment: .center)
     private var itemViews       = [UIView]()
     private var username: String!
-    weak var delegate: FollowerListVCDelegate!
+    weak var delegate   : FollowerListVCDelegate!
     
     
     // MARK: - Initializers
@@ -92,8 +92,11 @@ extension UserInfoVC {
     
     
     private func layoutUI() {
-        let padding: CGFloat    = 20
-        let itemHeight: CGFloat = 140
+        let padding: CGFloat                        = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 10  : 20
+        let itemViewOneConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 0  : 20
+        let itemViewOneHeightConstant: CGFloat      = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 170  : 180
+        let itemHeight: CGFloat                     = 140
+
         
         itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         
@@ -108,9 +111,9 @@ extension UserInfoVC {
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180),
+            headerView.heightAnchor.constraint(equalToConstant: itemViewOneHeightConstant),
             
-            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: itemViewOneConstraintConstant),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
