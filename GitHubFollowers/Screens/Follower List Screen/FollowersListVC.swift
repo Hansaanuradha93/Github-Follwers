@@ -25,7 +25,6 @@ class FollowersListVC: DataLoadingVC {
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     
     
-    
     // MARK: - Initializers
     init(username: String) {
         super.init(nibName: nil, bundle: nil)

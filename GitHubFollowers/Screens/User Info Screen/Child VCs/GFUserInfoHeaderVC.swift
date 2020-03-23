@@ -43,7 +43,7 @@ extension GFUserInfoHeaderVC {
         locationLabel.text          = user.location ?? "No Location"
         bioLabel.text               = user.bio ?? "No bio available"
         bioLabel.numberOfLines      = 3
-        locationImageView.image     = Images.location
+        locationImageView.image     = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
         downloadAvatarImage()
     }

@@ -34,16 +34,16 @@ extension GFItemView {
     func setup(itemInfoType: ItemInfoType, withCount count: Int) {
         switch itemInfoType {
         case .repos:
-            symbolImageView.image   = Images.repos
+            symbolImageView.image   = SFSymbols.repos
             titleLabel.text         = "Public Repos"
         case .gists:
-            symbolImageView.image   = Images.gists
+            symbolImageView.image   = SFSymbols.gists
             titleLabel.text         = "Public Gists"
         case .followers:
-            symbolImageView.image   = Images.followers
+            symbolImageView.image   = SFSymbols.followers
             titleLabel.text         = "Followers"
         case .following:
-            symbolImageView.image   = Images.followings
+            symbolImageView.image   = SFSymbols.followings
             titleLabel.text         = "Following"
         }
         countLabel.text             = "\(count)"
