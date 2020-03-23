@@ -23,6 +23,7 @@ class FollowersListVC: DataLoadingVC {
     private var lastScrollPosition: CGFloat     = 0
     private var collectionView: UICollectionView!
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var addButton: UIBarButtonItem!
     
     
     // MARK: - Initializers
@@ -72,10 +73,10 @@ extension FollowersListVC {
     
     
     private func configureViewController() {
-        view.backgroundColor                = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true // Get large titles
-        let addButton                       = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavourite))
-        navigationItem.rightBarButtonItem   = addButton
+        view.backgroundColor                                    = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles  = true // Get large titles
+        addButton                                           = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavourite))
+        navigationItem.rightBarButtonItem                       = addButton
     }
     
     
@@ -91,9 +92,11 @@ extension FollowersListVC {
     
     private func getFollowers(username: String, page: Int) {
         self.showLoadingView()
+        self.addButton.isEnabled = false
         NetworkManager.shared.getFollwers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
+            DispatchQueue.main.async { self.addButton.isEnabled = true }
             
             switch result {
             case .success(let followers):
