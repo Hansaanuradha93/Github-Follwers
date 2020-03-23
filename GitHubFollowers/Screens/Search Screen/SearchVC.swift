@@ -7,7 +7,6 @@ class SearchVC: UIViewController {
     private let usernameTextField   = GFTextField()
     private let callToActionButton  = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
     private var isUsernameEntered: Bool { return  !usernameTextField.text!.isEmpty }
-    private var logoImageTopConstraint: NSLayoutConstraint!
     
     
     // MARK: - View Controller
