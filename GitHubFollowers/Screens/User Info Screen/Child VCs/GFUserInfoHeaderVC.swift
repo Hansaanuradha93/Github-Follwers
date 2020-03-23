@@ -2,17 +2,17 @@ import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
 
+    // MARK: - Properties
     private let avatarImageView         = GFAvatarImageView(frame: .zero)
     private let usernameLabel           = GFTitleLabel(textAlignment: .left, fontSize: 34)
     private let nameLabel               = GFSecondaryTitleLabel(fontSize: 18)
     private let locationImageView       = UIImageView()
     private let locationLabel           = GFSecondaryTitleLabel(fontSize: 18)
     private let bioLabel                = GFBodyLabel(textAlignment: .left)
+    private var user: User!
     
     
-    var user: User!
-    
-    
+    // MARK: - Initializers
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
@@ -24,12 +24,18 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
         layoutUI()
         configureUIElements()
     }
+}
+
+
+// MARK: - Private Methods
+extension GFUserInfoHeaderVC {
     
     private func configureUIElements() {
         usernameLabel.text          = user.login ?? ""
@@ -59,6 +65,7 @@ class GFUserInfoHeaderVC: UIViewController {
         view.addSubview(locationLabel)
         view.addSubview(bioLabel)
     }
+    
     
     private func layoutUI() {
         let padding: CGFloat            = 20

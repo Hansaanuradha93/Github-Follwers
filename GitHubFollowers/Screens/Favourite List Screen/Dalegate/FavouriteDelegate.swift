@@ -1,17 +1,24 @@
 import UIKit
 
-class FavouriteDelegate: NSObject, UITableViewDelegate {
+class FavouriteDelegate: NSObject {
     
+    // MARK: - Properties
     private var favourites: [Follower]
     private var navigationController: UINavigationController?
     
     
+    // MARK: - Initializers
     init(favourites: [Follower], navigationController: UINavigationController?) {
         self.favourites = favourites
         self.navigationController = navigationController
         super.init()
     }
     
+}
+
+
+// MARK: - TableView Delegate
+extension FavouriteDelegate: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0

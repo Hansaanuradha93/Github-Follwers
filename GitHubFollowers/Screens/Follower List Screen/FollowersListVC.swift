@@ -5,13 +5,15 @@ protocol FollowerListVCDelegate: class {
     func didRequestForFollowers(for username: String)
 }
 
-
 class FollowersListVC: DataLoadingVC {
 
+    // MARK: - Enums
     enum Section {
         case main
     }
     
+    
+    // MARK: - Properties
     private var username: String!
     private var followers: [Follower]           = []
     private var filteredFollowers: [Follower]   = []
@@ -22,6 +24,9 @@ class FollowersListVC: DataLoadingVC {
     private var collectionView: UICollectionView!
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+    
+    
+    // MARK: - Initializers
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username   = username
@@ -34,6 +39,7 @@ class FollowersListVC: DataLoadingVC {
     }
     
     
+    // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -49,6 +55,13 @@ class FollowersListVC: DataLoadingVC {
         navigationController?.setNavigationBarHidden(false, animated: true) // Show the navigation bar
     }
     
+    
+    
+}
+
+
+// MARK: - Private methods
+extension FollowersListVC {
     
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createCollectionViewFlowLayout(in: view, for: 3)) // 3 columns
@@ -144,6 +157,7 @@ class FollowersListVC: DataLoadingVC {
 }
 
 
+// MARK: - CollectionView Delegate
 extension FollowersListVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -157,6 +171,7 @@ extension FollowersListVC: UICollectionViewDelegate {
 }
 
 
+// MARK: -ScrollView
 extension FollowersListVC {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -187,6 +202,7 @@ extension FollowersListVC {
 }
 
 
+// MARK: - SearchBar
 extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -206,6 +222,9 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
 }
 
+
+
+// MARK: - FollowerListVCDeletage
 extension FollowersListVC: FollowerListVCDelegate {
     
     func didRequestForFollowers(for username: String) {
