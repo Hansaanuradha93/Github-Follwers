@@ -1,20 +1,26 @@
 import Foundation
 
-
+// MARK: - PersistenceActionType
 enum PersistenceActionType {
     case add, remove
 }
 
 
+// MARK: - PersistenceManager
 enum PersistenceManager {
     
+    // MARK: - Properties
     static private let defaults = UserDefaults.standard
     
-    
+    // MARK: - Enums
     enum Keys {
         static let favourites = "favourites"
     }
-    
+}
+
+
+// MARK: - Private Methods
+extension PersistenceManager {
     
     static func updateWith(favourite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
         retrieveFavourites { result in
@@ -68,4 +74,5 @@ enum PersistenceManager {
             return .unableToFavourute
         }
     }
+    
 }

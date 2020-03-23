@@ -1,34 +1,46 @@
 import Foundation
 
+// MARK: - Cases
 enum GithubEndPoint {
     
-    // Cases
     case followers(username: String, perPage: Int, page: Int)
     case user(username: String)
+}
+
+
+// MARK: - Scheme
+extension GithubEndPoint {
     
-    
-    // Scheme
     private var scheme: String {
         return "https"
     }
+}
+
+
+// MARK: - Host
+extension GithubEndPoint {
     
-    
-    // Host
     private var host: String {
         return "api.github.com"
     }
+}
+
+
+// MARK: - Path
+extension GithubEndPoint {
     
-    
-    // Path
     private var path: String {
         switch self {
         case .followers(let username, _, _): return "/users/\(username)/followers"
         case .user(let username): return "/users/\(username)"
         }
     }
+}
+
+
+// MARK: - Parameters
+extension GithubEndPoint {
     
-    
-    // Parameters
     private var parameters: [String : Any] {
         switch self {
         case .followers( _,let perPage, let page):
@@ -40,9 +52,12 @@ enum GithubEndPoint {
         case .user( _): return ["":""]
         }
     }
-      
+}
+
+
+// MARK: - Query Components
+extension GithubEndPoint {
     
-    // Query Components
     private var queryComponents: [URLQueryItem] {
         var components      = [URLQueryItem]()
         for(key, value) in parameters {
@@ -51,7 +66,11 @@ enum GithubEndPoint {
         }
         return components
     }
-    
+}
+
+
+// MARK: - Url
+extension GithubEndPoint {
     
     var url: URL {
         var components          = URLComponents()
@@ -62,7 +81,6 @@ enum GithubEndPoint {
         return components.url!
     }
 }
-
 
 
 
