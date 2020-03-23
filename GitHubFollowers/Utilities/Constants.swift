@@ -1,5 +1,6 @@
 import UIKit
 
+// MARK: - SFSymbols
 enum SFSymbols {
     static let location     = "mappin.and.ellipse"
     static let repos        = "folder"
@@ -9,6 +10,7 @@ enum SFSymbols {
 }
 
 
+// MARK: - Images
 enum Images {
     static let ghLogo       = UIImage(named: "gh-logo")
     static let placeHolder  = UIImage(named: "avatar-placeholder")
@@ -21,6 +23,7 @@ enum Images {
 }
 
 
+// MARK: - ScreenSize
 enum ScreenSize {
     static let width        = UIScreen.main.bounds.size.width
     static let height       = UIScreen.main.bounds.size.height
@@ -29,6 +32,7 @@ enum ScreenSize {
 }
 
 
+// MARK: - DeviceTypes
 enum DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom
     static let nativeScale              = UIScreen.main.nativeScale
