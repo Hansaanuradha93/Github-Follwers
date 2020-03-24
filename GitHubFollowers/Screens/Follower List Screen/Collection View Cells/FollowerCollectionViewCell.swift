@@ -40,8 +40,7 @@ extension FollowerCollectionViewCell {
     
     
     private func configure() {
-        addSubview(avatarImageView)
-        addSubview(usernameLabel)
+        addSubviews(avatarImageView, usernameLabel)
 
     
         NSLayoutConstraint.activate([

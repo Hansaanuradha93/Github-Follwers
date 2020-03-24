@@ -27,7 +27,6 @@ class GFUserInfoHeaderVC: UIViewController {
     // MARK: - View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubViews()
         layoutUI()
         configureUIElements()
     }
@@ -57,21 +56,12 @@ extension GFUserInfoHeaderVC {
     }
     
     
-    private func addSubViews() {
-        view.addSubview(avatarImageView)
-        view.addSubview(usernameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(locationImageView)
-        view.addSubview(locationLabel)
-        view.addSubview(bioLabel)
-    }
-    
-    
     private func layoutUI() {
         let padding: CGFloat                        = 20
         let textImagePadding: CGFloat               = 12
         let bioLabelTopConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 0  : 20
 
+        view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel)
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

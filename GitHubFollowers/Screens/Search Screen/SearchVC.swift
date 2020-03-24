@@ -48,9 +48,7 @@ extension SearchVC {
     
     
     private func configureUIElements() {
-        view.addSubview(logoImageView)
-        view.addSubview(usernameTextField)
-        view.addSubview(callToActionButton)
+        view.addSubviews(logoImageView, usernameTextField, callToActionButton)
 
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
