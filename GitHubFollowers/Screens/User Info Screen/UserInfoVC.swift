@@ -74,17 +74,9 @@ extension UserInfoVC {
     
     
     private func configureUIElements(with user: User) {
-        let  userInfoHeaderVC = GFUserInfoHeaderVC(user: user)
-        
-        let repoItemVC          = GFRepoItemVC(user: user)
-        repoItemVC.delegate     = self
-        
-        let followerItemVC      = GFFollowerItemVC(user: user)
-        followerItemVC.delegate = self
-        
-        self.add(childVC: userInfoHeaderVC, to: self.headerView)
-        self.add(childVC: repoItemVC, to: self.itemViewOne)
-        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
+        self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
         let createdAt           = user.createdAt ?? Date()
         self.dateLabel.text     = "GitHub since \(String(describing: createdAt.convertToMonthYearFormat()))"
     }
