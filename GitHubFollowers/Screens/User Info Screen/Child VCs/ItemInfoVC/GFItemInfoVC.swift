@@ -1,5 +1,11 @@
 import UIKit
 
+protocol GFItemInfoVCDelegate: class {
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
+
 class GFItemInfoVC: UIViewController {
 
     // MARK: - Properties
@@ -8,7 +14,7 @@ class GFItemInfoVC: UIViewController {
     let itemInfoViewTwo = GFItemView()
     let actionButton    = GFButton()
     var user: User!
-    weak var delegate: UserInfoVCDelegate!
+    weak var delegate: GFItemInfoVCDelegate!
     
     
     // MARK: - Initializers

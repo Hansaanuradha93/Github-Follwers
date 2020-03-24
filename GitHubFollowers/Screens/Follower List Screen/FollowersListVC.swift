@@ -1,10 +1,5 @@
 import UIKit
 
-
-protocol FollowerListVCDelegate: class {
-    func didRequestForFollowers(for username: String)
-}
-
 class FollowersListVC: DataLoadingVC {
 
     // MARK: - Enums
@@ -245,7 +240,7 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
 
 
 // MARK: - FollowerListVCDeletage
-extension FollowersListVC: FollowerListVCDelegate {
+extension FollowersListVC: UserInfoVCDelegate {
     
     func didRequestForFollowers(for username: String) {
         self.username   = username

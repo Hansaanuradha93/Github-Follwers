@@ -1,8 +1,7 @@
 import UIKit
 
 protocol UserInfoVCDelegate: class {
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
+    func didRequestForFollowers(for username: String)
 }
 
 
@@ -15,7 +14,7 @@ class UserInfoVC: DataLoadingVC {
     private let dateLabel       = GFBodyLabel(textAlignment: .center)
     private var itemViews       = [UIView]()
     private var username: String!
-    weak var delegate   : FollowerListVCDelegate!
+    weak var delegate   : UserInfoVCDelegate!
     
     
     // MARK: - Initializers
@@ -135,7 +134,7 @@ extension UserInfoVC {
 }
 
 // MARK: - UserInfoVCDelegate
-extension UserInfoVC: UserInfoVCDelegate {
+extension UserInfoVC: GFItemInfoVCDelegate {
     
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl ?? "") else {
