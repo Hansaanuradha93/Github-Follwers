@@ -124,7 +124,7 @@ extension FollowersListVC {
                 
             }
             
-            self.isLoadingFollowers                                 = false
+            self.isLoadingFollowers = false
         }
     }
     
