@@ -94,7 +94,7 @@ extension UserInfoVC {
     private func layoutUI() {
         let padding: CGFloat                        = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 10  : 20
         let itemViewOneConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 0  : 20
-        let itemViewOneHeightConstant: CGFloat      = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 170  : 180
+        let itemViewOneHeightConstant: CGFloat      = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 170  : 210
         let itemHeight: CGFloat                     = 140
 
         

@@ -60,6 +60,8 @@ extension GFUserInfoHeaderVC {
         let padding: CGFloat                        = 20
         let textImagePadding: CGFloat               = 12
         let bioLabelTopConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 0  : 20
+        let bioLabelHeightConstant: CGFloat         = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 60  : 90
+
 
         view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel)
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,7 +95,7 @@ extension GFUserInfoHeaderVC {
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: bioLabelTopConstraintConstant),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bioLabel.heightAnchor.constraint(equalToConstant: 60)
+            bioLabel.heightAnchor.constraint(equalToConstant: bioLabelHeightConstant)
         ])
     }
 }
