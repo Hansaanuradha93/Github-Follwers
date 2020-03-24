@@ -133,8 +133,9 @@ extension UserInfoVC {
 
 }
 
-// MARK: - UserInfoVCDelegate
-extension UserInfoVC: GFItemInfoVCDelegate {
+
+// MARK: - GFRepoItemVCDelegate
+extension UserInfoVC: GFRepoItemVCDelegate {
     
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl ?? "") else {
@@ -144,8 +145,14 @@ extension UserInfoVC: GFItemInfoVCDelegate {
         presentSafariVC(with: url)
     }
     
+    
+}
+
+
+// MARK: - GFFollowerItemVCDelegate
+extension UserInfoVC: GFFollowerItemVCDelegate {
+    
     func didTapGetFollowers(for user: User) {
-        
         guard user.followers != 0 else {
             presentGFAlertOnMainTread(title: "No Followers", message: "This user doesn't have any followers. Go follow this user 😀.", buttonTitle: "Ok")
             return
@@ -153,4 +160,6 @@ extension UserInfoVC: GFItemInfoVCDelegate {
         delegate.didRequestForFollowers(for: user.login ?? "")
         dismissVC()
     }
+    
+    
 }

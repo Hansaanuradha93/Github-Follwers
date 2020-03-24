@@ -239,7 +239,7 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
 
 
 
-// MARK: - FollowerListVCDeletage
+// MARK: - UserInfoVCDelegate
 extension FollowersListVC: UserInfoVCDelegate {
     
     func didRequestForFollowers(for username: String) {
