@@ -65,6 +65,7 @@ extension FavouriteListVC {
         tableView.backgroundColor   = .systemBackground
         tableView.separatorStyle    = .none
         view.addSubview(tableView)
+        tableView.removeExcessCells()
         tableView.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.reuseID)
     }
     
