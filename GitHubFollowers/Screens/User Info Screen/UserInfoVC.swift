@@ -8,6 +8,9 @@ protocol UserInfoVCDelegate: class {
 class UserInfoVC: DataLoadingVC {
     
     // MARK: - Properties
+    private let scrollView      = UIScrollView()
+    private let contentView     = UIView()
+    
     private let headerView      = UIView()
     private let itemViewOne     = UIView()
     private let itemViewTwo     = UIView()
@@ -70,6 +73,29 @@ extension UserInfoVC {
                 self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "OK")
             }
         }
+    }
+    
+    
+    private func configureScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints    = false
+        contentView.translatesAutoresizingMaskIntoConstraints   = false
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1)
+        ])
     }
     
     
