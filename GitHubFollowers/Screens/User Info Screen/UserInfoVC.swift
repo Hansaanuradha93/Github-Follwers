@@ -83,13 +83,9 @@ extension UserInfoVC {
     
     
     private func layoutUI() {
-        let padding: CGFloat                        = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 10  : 20
-        let itemViewOneConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 0  : 20
-        let itemViewOneHeightConstant: CGFloat      = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 170  : 210
-        let itemHeight: CGFloat                     = 140
-
-        
-        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
+        let padding: CGFloat    = 20
+        let itemHeight: CGFloat = 140
+        itemViews               = [headerView, itemViewOne, itemViewTwo, dateLabel]
         
         for itemView in itemViews {
             view.addSubview(itemView)
@@ -102,9 +98,9 @@ extension UserInfoVC {
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: itemViewOneHeightConstant),
+            headerView.heightAnchor.constraint(equalToConstant: 210),
             
-            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: itemViewOneConstraintConstant),
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
