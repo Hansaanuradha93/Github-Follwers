@@ -25,21 +25,21 @@ extension PersistenceManager {
     static func updateWith(favourite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
         retrieveFavourites { result in
             switch result {
-            case .success(var retrievedFavourites):
+            case .success(var favourites):
                 
                 switch actionType {
                 case .add:
-                    guard !retrievedFavourites.contains(favourite) else {
+                    guard !favourites.contains(favourite) else {
                         completed(.alreadyInFavourites)
                         return
                     }
-                    retrievedFavourites.append(favourite)
+                    favourites.append(favourite)
                     
                 case .remove:
-                    retrievedFavourites.removeAll { $0 == favourite }
+                    favourites.removeAll { $0 == favourite }
                 }
                 
-                completed(save(favourites: retrievedFavourites))
+                completed(save(favourites: favourites))
                 
             case .failure(let error):
                 completed(error)
