@@ -8,7 +8,6 @@ class GFTabBar: UITabBarController {
         UITabBar.appearance().tintColor = .systemGreen
         viewControllers                 = [createSearchNC(), createFavouriteListNC()]
     }
-
 }
 
 

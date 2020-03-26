@@ -49,11 +49,12 @@ extension GFAlertVC {
     }
    
     
-    private func addSubviews() { view.addSubviews(containerView, titleLabel, messageLabel, actionButton) }
+    private func addSubviews() {
+        view.addSubviews(containerView, titleLabel, messageLabel, actionButton)
+    }
  
     
     private func configureContainerView() {
-        
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -85,7 +86,6 @@ extension GFAlertVC {
             messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12)
         ])
-        
     }
     
     
