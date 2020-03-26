@@ -76,7 +76,6 @@ extension SearchVC {
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
 }
 
 
