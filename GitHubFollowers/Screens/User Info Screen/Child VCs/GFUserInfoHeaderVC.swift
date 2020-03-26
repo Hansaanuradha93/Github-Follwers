@@ -44,15 +44,7 @@ extension GFUserInfoHeaderVC {
         bioLabel.numberOfLines      = 3
         locationImageView.image     = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
-        downloadAvatarImage()
-    }
-    
-    
-    private func downloadAvatarImage() {
-        NetworkManager.shared.downloadImage(from: user.avatarUrl ?? "") { [weak self] image in
-            guard let self          = self else { return }
-            DispatchQueue.main.async { self.avatarImageView.image = image }
-        }
+        avatarImageView.downloadImage(fromUrl: user.avatarUrl ?? "")
     }
     
     
