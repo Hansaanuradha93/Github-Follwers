@@ -2,6 +2,7 @@ import UIKit
 
 // MARK: - Enums
 enum ItemInfoType {
+    
     case repos, gists, followers, following
 }
 

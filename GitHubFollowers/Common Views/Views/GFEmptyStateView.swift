@@ -3,8 +3,8 @@ import UIKit
 class GFEmptyStateView: UIView {
 
     // MARK: - Properties
-    private let messageLabel            = GFTitleLabel(textAlignment: .center, fontSize: 28)
-    private let logoImageView           = UIImageView()
+    private let messageLabel    = GFTitleLabel(textAlignment: .center, fontSize: 28)
+    private let logoImageView   = UIImageView()
     
     
     // MARK: - Initializers
@@ -51,8 +51,8 @@ extension GFEmptyStateView {
     
     private func configureLogoImageView() {
         addSubview(logoImageView)
-        logoImageView.image = Images.emptyState
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.image                     = Images.emptyState
         
         let bottomConstraintConstant: CGFloat   = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50  : 40
         let padding: CGFloat                    = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 150 : 170

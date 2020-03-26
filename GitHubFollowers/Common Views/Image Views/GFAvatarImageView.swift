@@ -3,7 +3,7 @@ import UIKit
 class GFAvatarImageView: UIImageView {
     
     // MARK: - Properties
-    private let placeholderImage    = Images.placeHolder
+    private let placeholderImage = Images.placeHolder
     
     
     // MARK: - Initializers
