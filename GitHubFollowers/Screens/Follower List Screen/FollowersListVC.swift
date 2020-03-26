@@ -48,11 +48,8 @@ class FollowersListVC: DataLoadingVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(false, animated: true) // Show the navigation bar
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
-    
-    
 }
 
 
@@ -60,7 +57,7 @@ class FollowersListVC: DataLoadingVC {
 extension FollowersListVC {
     
     private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createCollectionViewFlowLayout(in: view, for: 3)) // 3 columns
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createCollectionViewFlowLayout(in: view, for: 3))
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
@@ -70,8 +67,8 @@ extension FollowersListVC {
     
     private func configureViewController() {
         view.backgroundColor                                    = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles  = true // Get large titles
-        addButton                                           = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavourite))
+        navigationController?.navigationBar.prefersLargeTitles  = true
+        addButton                                               = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavourite))
         navigationItem.rightBarButtonItem                       = addButton
     }
     
@@ -102,18 +99,7 @@ extension FollowersListVC {
             
             switch result {
             case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false } // No more followers
-                self.followers.append(contentsOf: followers)
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow them 😀"
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                        self.navigationItem.searchController?.searchBar.isHidden = true
-                    }
-                    return
-                }
-                self.updateData(on: self.followers)
-                
+                self.updateUI(with: followers)
             case .failure(let error):
                 self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
                 
@@ -124,13 +110,29 @@ extension FollowersListVC {
     }
     
     
+    private func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers. Go follow them 😀"
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, in: self.view)
+                self.navigationItem.searchController?.searchBar.isHidden = true
+            }
+            return
+        }
+        self.updateData(on: self.followers)
+    }
+    
+    
     private func configureDatasoruce() {
-        datasource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCollectionViewCell.reuseID, for: indexPath) as! FollowerCollectionViewCell
+        datasource      = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+            let cell    = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCollectionViewCell.reuseID, for: indexPath) as! FollowerCollectionViewCell
             cell.set(follower: follower)
             return cell
         })
     }
+    
     
     private func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
@@ -147,29 +149,32 @@ extension FollowersListVC {
     }
     
     
+    private func saveFavourite(user: User) {
+        let favourite       = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self ] error in
+            guard let self  = self else { return }
+            guard let error = error else {
+                self.presentGFAlertOnMainTread(title: "Success!", message: "You have successfully favourited this user 🎉", buttonTitle: "Ok")
+                return
+            }
+            self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+        }
+    }
+    
+    
     @objc func addFavourite() {
         self.showLoadingView()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-            guard let self          = self else { return }
+            guard let self = self else { return }
             self.dismissLoadingView()
             switch result {
             case .success(let user):
-                let favourite       = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self ] error in
-                    guard let self  = self else { return }
-                    guard let error = error else {
-                        self.presentGFAlertOnMainTread(title: "Success!", message: "You have successfully favourited this user 🎉", buttonTitle: "Ok")
-                        return
-                    }
-                    self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-                }
-                
+                self.saveFavourite(user: user)
             case .failure(let error):
                 self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
-
 }
 
 
@@ -209,7 +214,7 @@ extension FollowersListVC {
         let contentHeight   =  scrollView.contentSize.height
         let height          = scrollView.frame.size.height
         
-        if offsetY > contentHeight - height {   // Has scrolled to the bottom
+        if offsetY > contentHeight - height {
             guard hasMoreFollowers, !isLoadingFollowers else { return }
             page += 1
             getFollowers(username: username, page: page)
