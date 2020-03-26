@@ -21,9 +21,6 @@ class FavouriteListVC: DataLoadingVC {
         configureViewController()
         configureTableView()
     }
-    
-    
-    
 }
 
 
@@ -31,31 +28,36 @@ class FavouriteListVC: DataLoadingVC {
 extension FavouriteListVC {
     
     private func configureViewController() {
-        view.backgroundColor                = .systemBackground
-        title                               = "Favourites"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor                                    = .systemBackground
+        title                                                   = "Favourites"
+        navigationController?.navigationBar.prefersLargeTitles  = true
     }
     
     
     private func getFavourites() {
         PersistenceManager.retrieveFavourites { [weak self] result in
-            guard let self      = self else { return }
+            guard let self = self else { return }
             switch result {
             case .success(let favourites):
-                if favourites.isEmpty {
-                    let message = "No favourites?\nGo follow a user from follower screen 😀"
-                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                    return
-                }
-                self.favourites = favourites
-                self.setDataSourceAndDelegate(with: favourites)
-                DispatchQueue.main.async {
-                    self.view.bringSubviewToFront(self.tableView)
-                    self.tableView.reloadData()
-                }
+                self.updateUI(withFavourites: favourites)
             case .failure(let error):
                 self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
+        }
+    }
+    
+    
+    private func updateUI(withFavourites favourites: [Follower]) {
+        if favourites.isEmpty {
+            let message = "No favourites?\nGo follow a user from follower screen 😀"
+            DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+            return
+        }
+        self.favourites = favourites
+        self.setDataSourceAndDelegate(with: favourites)
+        DispatchQueue.main.async {
+            self.view.bringSubviewToFront(self.tableView)
+            self.tableView.reloadData()
         }
     }
     
