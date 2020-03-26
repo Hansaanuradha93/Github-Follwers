@@ -57,8 +57,8 @@ extension GFUserInfoHeaderVC {
     
     
     private func layoutUI() {
-        let padding: CGFloat                        = 20
-        let textImagePadding: CGFloat               = 12
+        let padding: CGFloat            = 20
+        let textImagePadding: CGFloat   = 12
 
         view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel)
         locationImageView.translatesAutoresizingMaskIntoConstraints = false

@@ -47,7 +47,7 @@ class UserInfoVC: DataLoadingVC {
 extension UserInfoVC {
     
     private func configureViewController() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor                = .systemBackground
         navigationItem.title                = username
         let doneButton                      = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem   = doneButton
@@ -150,8 +150,6 @@ extension UserInfoVC: GFRepoItemVCDelegate {
         }
         presentSafariVC(with: url)
     }
-    
-    
 }
 
 
@@ -166,6 +164,4 @@ extension UserInfoVC: GFFollowerItemVCDelegate {
         delegate.didRequestForFollowers(for: user.login ?? "")
         dismissVC()
     }
-    
-    
 }

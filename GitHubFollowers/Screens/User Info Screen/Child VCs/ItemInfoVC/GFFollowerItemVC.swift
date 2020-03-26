@@ -4,6 +4,7 @@ protocol GFFollowerItemVCDelegate: class {
     func didTapGetFollowers(for user: User)
 }
 
+
 class GFFollowerItemVC: GFItemInfoVC {
     
     // MARK: - Properties
