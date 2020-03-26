@@ -1,6 +1,7 @@
 import Foundation
 
 struct User: Codable, Hashable {
+    
     let login: String?
     let avatarUrl: String?
     let name: String?

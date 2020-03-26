@@ -11,18 +11,14 @@ enum GithubEndPoint {
 // MARK: - Scheme
 extension GithubEndPoint {
     
-    private var scheme: String {
-        return "https"
-    }
+    private var scheme: String { return "https" }
 }
 
 
 // MARK: - Host
 extension GithubEndPoint {
     
-    private var host: String {
-        return "api.github.com"
-    }
+    private var host: String { return "api.github.com" }
 }
 
 
@@ -45,8 +41,8 @@ extension GithubEndPoint {
         switch self {
         case .followers( _,let perPage, let page):
             let parameters: [String : Any] = [
-                "per_page": perPage,
-                "page": page
+                "per_page"  : perPage,
+                "page"      : page
             ]
             return parameters
         case .user( _): return ["":""]

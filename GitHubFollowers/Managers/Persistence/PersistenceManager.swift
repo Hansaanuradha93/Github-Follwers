@@ -55,8 +55,8 @@ extension PersistenceManager {
         }
         
         do {
-            let decoder = JSONDecoder()
-            let favourites = try decoder.decode([Follower].self, from: favouritesData)
+            let decoder     = JSONDecoder()
+            let favourites  = try decoder.decode([Follower].self, from: favouritesData)
             completed(.success(favourites))
         } catch {
             completed(.failure(.unableToFavourute))
@@ -74,5 +74,4 @@ extension PersistenceManager {
             return .unableToFavourute
         }
     }
-    
 }

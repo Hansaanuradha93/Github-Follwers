@@ -10,7 +10,6 @@ class NetworkManager {
     
     // MARK: - Initializers
     private init() {}
-    
 }
 
 
@@ -23,22 +22,22 @@ extension NetworkManager {
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            if let _ = error { // Error validation
+            if let _ = error {
                 completed(.failure(.unableToComplete))
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { // Response validation
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
             }
             
-            guard let data = data else { // Data validation
+            guard let data = data else {
                 completed(.failure(.invalidData))
                 return
             }
             
-            do { // Json Decoding
+            do {
                 let decoder                 = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let followers               = try decoder.decode([Follower].self, from: data)
@@ -57,28 +56,28 @@ extension NetworkManager {
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            if let _ = error { // Error validation
+            if let _ = error {
                 completed(.failure(.unableToComplete))
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { // Response validation
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 completed(.failure(.invalidResponse))
                 return
             }
             
-            guard let data = data else { // Data validation
+            guard let data = data else {
                 completed(.failure(.invalidData))
                 return
             }
             
-            do { // Json Decoding
+            do {
                 let decoder                     = JSONDecoder()
                 decoder.keyDecodingStrategy     = .convertFromSnakeCase
                 decoder.dateDecodingStrategy    = .iso8601
                 let user                        = try decoder.decode(User.self, from: data)
                 completed(.success(user))
-            } catch let error{
+            } catch let error {
                 print("Error: \(error)")
                 completed(.failure(.invalidData))
             }
@@ -88,14 +87,14 @@ extension NetworkManager {
     
     
     func downloadImage(from urlString: String, completed: @escaping(UIImage?) -> Void) {
-        let cacheKey            = NSString(string: urlString)
+        let cacheKey = NSString(string: urlString)
         
         if let image = cache.object(forKey: cacheKey) {
             completed(image)
             return
         }
         
-        guard  let url          = URL(string: urlString) else {
+        guard  let url = URL(string: urlString) else {
             completed(nil)
             return
         }
