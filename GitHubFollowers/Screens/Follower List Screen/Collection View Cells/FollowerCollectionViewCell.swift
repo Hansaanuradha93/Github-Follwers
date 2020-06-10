@@ -34,7 +34,6 @@ extension FollowerCollectionViewCell {
     private func configure() {
         addSubviews(avatarImageView, usernameLabel)
 
-    
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
