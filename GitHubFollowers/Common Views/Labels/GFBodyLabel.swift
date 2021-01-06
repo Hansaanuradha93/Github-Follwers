@@ -2,16 +2,14 @@ import UIKit
 
 class GFBodyLabel: UILabel {
     
-    // MARK: - Initializers
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError() }
 
     
     convenience init(textAlignment: NSTextAlignment) {
@@ -25,12 +23,12 @@ class GFBodyLabel: UILabel {
 extension GFBodyLabel {
     
     private func configure() {
-        font                                        = UIFont.preferredFont(forTextStyle: .body)
-        textColor                                   = .secondaryLabel
-        adjustsFontForContentSizeCategory           = true
-        adjustsFontSizeToFitWidth                   = true
-        minimumScaleFactor                          = 0.75
-        lineBreakMode                               = .byWordWrapping
-        translatesAutoresizingMaskIntoConstraints   = false
+        font = UIFont.preferredFont(forTextStyle: .body)
+        textColor = .secondaryLabel
+        adjustsFontForContentSizeCategory = true
+        adjustsFontSizeToFitWidth = true
+        minimumScaleFactor = 0.75
+        lineBreakMode = .byWordWrapping
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }
