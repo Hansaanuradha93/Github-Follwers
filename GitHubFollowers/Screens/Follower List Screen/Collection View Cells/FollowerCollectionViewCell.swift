@@ -2,23 +2,21 @@ import UIKit
 
 class FollowerCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - Properties
-    static let reuseID              = "FollowerCell"
-    private let avatarImageView     = GFAvatarImageView(frame: .zero)
-    private let usernameLabel       = GFTitleLabel(textAlignment: .center, fontSize: 16)
-    private let padding: CGFloat    = 8
+    // MARK: Properties
+    static let reuseID = "FollowerCell"
+    private let avatarImageView = GFAvatarImageView(frame: .zero)
+    private let usernameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
+    private let padding: CGFloat = 8
     
     
-    // MARK: - Initializers
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError() }
 }
 
 
@@ -45,6 +43,5 @@ extension FollowerCollectionViewCell {
             usernameLabel.widthAnchor.constraint(equalTo: avatarImageView.widthAnchor),
             usernameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
-        
     }
 }
