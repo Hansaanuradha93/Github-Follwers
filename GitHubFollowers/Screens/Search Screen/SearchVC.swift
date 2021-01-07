@@ -2,14 +2,14 @@ import UIKit
 
 class SearchVC: UIViewController {
 
-    // MARK: - Properties
-    private let logoImageView       = UIImageView()
-    private let usernameTextField   = GFTextField()
-    private let callToActionButton  = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
+    // MARK: Properties
+    private let logoImageView = UIImageView()
+    private let usernameTextField = GFTextField()
+    private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
     private var isUsernameEntered: Bool { return  !usernameTextField.text!.isEmpty }
     
     
-    // MARK: - View Controller
+    // MARK: View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -28,13 +28,7 @@ class SearchVC: UIViewController {
 
 
 // MARK: - Private Methods
-extension SearchVC {
-    
-    private func createTapGesture() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-    }
-    
+private extension SearchVC {
     
     @objc func pushFollwersViewController() {
         guard isUsernameEntered else {
@@ -42,12 +36,18 @@ extension SearchVC {
             return
         }
         usernameTextField.resignFirstResponder()
-        let follwersListVC      = FollowersListVC(username: usernameTextField.text ?? "")
+        let follwersListVC = FollowersListVC(username: usernameTextField.text ?? "")
         navigationController?.pushViewController(follwersListVC, animated: true)
     }
     
     
-    private func configureUIElements() {
+    func createTapGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
+    
+    func configureUIElements() {
         view.addSubviews(logoImageView, usernameTextField, callToActionButton)
 
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +81,7 @@ extension SearchVC {
 
 // MARK: - UITextField Delegate
 extension SearchVC: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollwersViewController()
         return true
