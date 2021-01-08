@@ -2,29 +2,27 @@ import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
 
-    // MARK: - Properties
-    private let avatarImageView         = GFAvatarImageView(frame: .zero)
-    private let usernameLabel           = GFTitleLabel(textAlignment: .left, fontSize: 34)
-    private let nameLabel               = GFSecondaryTitleLabel(fontSize: 18)
-    private let locationImageView       = UIImageView()
-    private let locationLabel           = GFSecondaryTitleLabel(fontSize: 18)
-    private let bioLabel                = GFBodyLabel(textAlignment: .left)
+    // MARK: Properties
+    private let avatarImageView = GFAvatarImageView(frame: .zero)
+    private let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 34)
+    private let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
+    private let locationImageView = UIImageView()
+    private let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
+    private let bioLabel = GFBodyLabel(textAlignment: .left)
     private var user: User!
     
     
-    // MARK: - Initializers
+    // MARK: Initializers
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
-    // MARK: - View Controller
+    // MARK: View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
@@ -34,23 +32,23 @@ class GFUserInfoHeaderVC: UIViewController {
 
 
 // MARK: - Private Methods
-extension GFUserInfoHeaderVC {
+private extension GFUserInfoHeaderVC {
     
-    private func configureUIElements() {
-        usernameLabel.text          = user.login ?? ""
-        nameLabel.text              = user.name ?? ""
-        locationLabel.text          = user.location ?? "No Location"
-        bioLabel.text               = user.bio ?? "No bio available"
-        bioLabel.numberOfLines      = 3
-        locationImageView.image     = SFSymbols.location
+    func configureUIElements() {
+        usernameLabel.text = user.login ?? ""
+        nameLabel.text = user.name ?? ""
+        locationLabel.text = user.location ?? "No Location"
+        bioLabel.text = user.bio ?? "No bio available"
+        bioLabel.numberOfLines = 3
+        locationImageView.image = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
         avatarImageView.downloadImage(fromUrl: user.avatarUrl ?? "")
     }
     
     
-    private func layoutUI() {
-        let padding: CGFloat            = 20
-        let textImagePadding: CGFloat   = 12
+    func layoutUI() {
+        let padding: CGFloat = 20
+        let textImagePadding: CGFloat = 12
 
         view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel)
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
