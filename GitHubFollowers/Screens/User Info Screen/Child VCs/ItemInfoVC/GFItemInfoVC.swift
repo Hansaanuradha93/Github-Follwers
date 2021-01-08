@@ -20,7 +20,7 @@ class GFItemInfoVC: UIViewController {
     required init?(coder: NSCoder) { fatalError() }
     
     
-    // MARK: - View Controllers
+    // MARK: View Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackground()
@@ -40,7 +40,6 @@ extension GFItemInfoVC {
 
 // MARK: - Private Methods
 private extension GFItemInfoVC {
-    
     
     func configureActionButton() {
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)

@@ -7,23 +7,21 @@ protocol GFRepoItemVCDelegate: class {
 
 class GFRepoItemVC: GFItemInfoVC {
     
-    // MARK: - Properties
+    // MARK: Properties
     weak var delegate: GFRepoItemVCDelegate!
     
     
-    // MARK: - Initializers
+    // MARK: Initializers
     init(user: User, delegate: GFRepoItemVCDelegate) {
         super.init(user: user)
         self.delegate = delegate
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError() }
     
     
-    // MARK: - View Conrtoller
+    // MARK: View Conrtoller
     override func viewDidLoad() {
         super.viewDidLoad()
         congifureItems()
@@ -32,9 +30,9 @@ class GFRepoItemVC: GFItemInfoVC {
 
 
 // MARK: - Private Methods
-extension GFRepoItemVC {
+private extension GFRepoItemVC {
     
-   private func congifureItems() {
+    func congifureItems() {
         itemInfoViewOne.setup(itemInfoType: .repos, withCount: user.publicRepos ?? 0)
         itemInfoViewTwo.setup(itemInfoType: .gists, withCount: user.publicGists ?? 0)
         actionButton.setup(backgroundColor: .systemPurple, title: "Github Profile")
