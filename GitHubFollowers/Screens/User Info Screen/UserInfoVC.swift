@@ -7,32 +7,30 @@ protocol UserInfoVCDelegate: class {
 
 class UserInfoVC: DataLoadingVC {
     
-    // MARK: - Properties
-    private let scrollView      = UIScrollView()
-    private let contentView     = UIView()
+    // MARK: Properties
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     
-    private let headerView      = UIView()
-    private let itemViewOne     = UIView()
-    private let itemViewTwo     = UIView()
-    private let dateLabel       = GFBodyLabel(textAlignment: .center)
-    private var itemViews       = [UIView]()
+    private let headerView = UIView()
+    private let itemViewOne = UIView()
+    private let itemViewTwo = UIView()
+    private let dateLabel = GFBodyLabel(textAlignment: .center)
+    private var itemViews = [UIView]()
     private var username: String!
     weak var delegate   : UserInfoVCDelegate!
     
     
-    // MARK: - Initializers
+    // MARK: Initializers
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username = username
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError() }
     
     
-    // MARK: - View Conrtoller
+    // MARK: View Conrtoller
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -44,22 +42,22 @@ class UserInfoVC: DataLoadingVC {
 
 
 // MARK: - Private Methods
-extension UserInfoVC {
-    
-    private func configureViewController() {
-        view.backgroundColor                = .systemBackground
-        navigationItem.title                = username
-        let doneButton                      = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
-        navigationItem.rightBarButtonItem   = doneButton
-    }
-    
+private extension UserInfoVC {
     
     @objc func dismissVC() {
         dismiss(animated: true)
     }
     
     
-    private func getUserInfo(username: String) {
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        navigationItem.title = username
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    
+    func getUserInfo(username: String) {
         self.showLoadingView()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
         guard let self = self else { return }
@@ -77,7 +75,7 @@ extension UserInfoVC {
     }
     
     
-    private func configureScrollView() {
+    func configureScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -91,19 +89,19 @@ extension UserInfoVC {
     }
     
     
-    private func configureUIElements(with user: User) {
+    func configureUIElements(with user: User) {
         self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
         self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
         self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
-        let createdAt           = user.createdAt ?? Date()
-        self.dateLabel.text     = "GitHub since \(String(describing: createdAt.convertToMonthYearFormat()))"
+        let createdAt = user.createdAt ?? Date()
+        self.dateLabel.text = "GitHub since \(String(describing: createdAt.convertToMonthYearFormat()))"
     }
     
     
-    private func layoutUI() {
-        let padding: CGFloat    = 20
+    func layoutUI() {
+        let padding: CGFloat = 20
         let itemHeight: CGFloat = 140
-        itemViews               = [headerView, itemViewOne, itemViewTwo, dateLabel]
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         
         for itemView in itemViews {
             contentView.addSubview(itemView)
@@ -130,13 +128,12 @@ extension UserInfoVC {
     }
     
     
-    private func add(childVC: UIViewController, to containerView: UIView) {
+    func add(childVC: UIViewController, to containerView: UIView) {
         self.addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
     }
-
 }
 
 
