@@ -2,13 +2,13 @@ import UIKit
 
 class NetworkManager {
     
-    // MARK: - Properties
-    static let shared           = NetworkManager()
-    private let perPage: Int    = 100
-    let cache                   = NSCache<NSString, UIImage>()
+    // MARK: Properties
+    static let shared = NetworkManager()
+    private let perPage = 100
+    private let cache = NSCache<NSString, UIImage>()
     
     
-    // MARK: - Initializers
+    // MARK: Initializers
     private init() {}
 }
 
@@ -17,11 +17,10 @@ class NetworkManager {
 extension NetworkManager {
     
     func getFollwers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        let endPoint    = GithubEndPoint.followers(username: username, perPage: perPage, page: page)
-        let url         = endPoint.url
+        let endPoint = GithubEndPoint.followers(username: username, perPage: perPage, page: page)
+        let url = endPoint.url
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
             if let _ = error {
                 completed(.failure(.unableToComplete))
                 return
@@ -38,9 +37,9 @@ extension NetworkManager {
             }
             
             do {
-                let decoder                 = JSONDecoder()
+                let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let followers               = try decoder.decode([Follower].self, from: data)
+                let followers = try decoder.decode([Follower].self, from: data)
                 completed(.success(followers))
             } catch {
                 completed(.failure(.invalidData))
@@ -51,11 +50,10 @@ extension NetworkManager {
     
     
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
-        let endPoint    = GithubEndPoint.user(username: username)
-        let url         = endPoint.url
+        let endPoint = GithubEndPoint.user(username: username)
+        let url = endPoint.url
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
             if let _ = error {
                 completed(.failure(.unableToComplete))
                 return
@@ -72,10 +70,10 @@ extension NetworkManager {
             }
             
             do {
-                let decoder                     = JSONDecoder()
-                decoder.keyDecodingStrategy     = .convertFromSnakeCase
-                decoder.dateDecodingStrategy    = .iso8601
-                let user                        = try decoder.decode(User.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .iso8601
+                let user = try decoder.decode(User.self, from: data)
                 completed(.success(user))
             } catch let error {
                 print("Error: \(error)")
@@ -94,17 +92,17 @@ extension NetworkManager {
             return
         }
         
-        guard  let url = URL(string: urlString) else {
+        guard let url = URL(string: urlString) else {
             completed(nil)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let self          = self,
-                    error           == nil,
-                    let response    = response as? HTTPURLResponse, response.statusCode == 200,
-                    let data        = data,
-                    let image       = UIImage(data: data) else {
+            guard let self = self,
+                  error == nil,
+                    let response = response as? HTTPURLResponse, response.statusCode == 200,
+                    let data = data,
+                    let image = UIImage(data: data) else {
                         completed(nil)
                         return
             }
