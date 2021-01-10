@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - PersistenceActionType
+// MARK: PersistenceActionType
 enum PersistenceActionType {
     case add, remove
 }
@@ -9,10 +9,10 @@ enum PersistenceActionType {
 // MARK: - PersistenceManager
 enum PersistenceManager {
     
-    // MARK: - Properties
+    // MARK: Properties
     static private let defaults = UserDefaults.standard
     
-    // MARK: - Enums
+    // MARK: Enums
     enum Keys {
         static let favourites = "favourites"
     }
@@ -26,7 +26,6 @@ extension PersistenceManager {
         retrieveFavourites { result in
             switch result {
             case .success(var favourites):
-                
                 switch actionType {
                 case .add:
                     guard !favourites.contains(favourite) else {
@@ -55,8 +54,8 @@ extension PersistenceManager {
         }
         
         do {
-            let decoder     = JSONDecoder()
-            let favourites  = try decoder.decode([Follower].self, from: favouritesData)
+            let decoder = JSONDecoder()
+            let favourites = try decoder.decode([Follower].self, from: favouritesData)
             completed(.success(favourites))
         } catch {
             completed(.failure(.unableToFavourute))
