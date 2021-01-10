@@ -1,8 +1,7 @@
 import Foundation
 
-// MARK: - Cases
+// MARK: Cases
 enum GithubEndPoint {
-    
     case followers(username: String, perPage: Int, page: Int)
     case user(username: String)
 }
@@ -10,14 +9,12 @@ enum GithubEndPoint {
 
 // MARK: - Scheme
 extension GithubEndPoint {
-    
     private var scheme: String { return "https" }
 }
 
 
 // MARK: - Host
 extension GithubEndPoint {
-    
     private var host: String { return "api.github.com" }
 }
 
@@ -39,10 +36,10 @@ extension GithubEndPoint {
     
     private var parameters: [String : Any] {
         switch self {
-        case .followers( _,let perPage, let page):
+        case .followers( _, let perPage, let page):
             let parameters: [String : Any] = [
-                "per_page"  : perPage,
-                "page"      : page
+                "per_page" : perPage,
+                "page" : page
             ]
             return parameters
         case .user( _): return ["":""]
@@ -55,9 +52,9 @@ extension GithubEndPoint {
 extension GithubEndPoint {
     
     private var queryComponents: [URLQueryItem] {
-        var components      = [URLQueryItem]()
+        var components = [URLQueryItem]()
         for(key, value) in parameters {
-            let queryItem   = URLQueryItem(name: key, value: "\(value)")
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
             components.append(queryItem)
         }
         return components
@@ -69,11 +66,11 @@ extension GithubEndPoint {
 extension GithubEndPoint {
     
     var url: URL {
-        var components          = URLComponents()
-        components.scheme       = scheme
-        components.host         = host
-        components.path         = path
-        components.queryItems   = queryComponents
+        var components = URLComponents()
+        components.scheme = scheme
+        components.host = host
+        components.path = path
+        components.queryItems = queryComponents
         return components.url!
     }
 }
