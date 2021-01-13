@@ -17,7 +17,7 @@ class UserInfoVC: DataLoadingVC {
     private let dateLabel = GFBodyLabel(textAlignment: .center)
     private var itemViews = [UIView]()
     private var username: String!
-    weak var delegate   : UserInfoVCDelegate!
+    weak var delegate: UserInfoVCDelegate!
     
     
     // MARK: Initializers
@@ -79,8 +79,8 @@ private extension UserInfoVC {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        scrollView.pinToEdges(of: view)
-        contentView.pinToEdges(of: scrollView)
+        scrollView.fillSuperview()
+        contentView.fill(view: scrollView)
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -103,28 +103,12 @@ private extension UserInfoVC {
         let itemHeight: CGFloat = 140
         itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         
-        for itemView in itemViews {
-            contentView.addSubview(itemView)
-            itemView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-                itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
-            ])
-        }
-        
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 210),
-            
-            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
-            itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
-            
-            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
-            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
-            
-            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        contentView.addSubviews(headerView, itemViewOne, itemViewTwo, dateLabel)
+       
+        headerView.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 0, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 210))
+        itemViewOne.anchor(top: headerView.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
+        itemViewTwo.anchor(top: itemViewOne.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
+        dateLabel.anchor(top: itemViewTwo.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding))
     }
     
     
