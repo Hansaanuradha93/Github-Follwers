@@ -107,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		473219D725AF3EC900018280 /* HeaderVC */ = {
+			isa = PBXGroup;
+			children = (
+				47089B2C242268C700FA50EB /* GFUserInfoHeaderVC.swift */,
+			);
+			path = HeaderVC;
+			sourceTree = "<group>";
+		};
 		474C5D682424859D00198D63 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +366,7 @@
 		479100912426160700071A0D /* Child VCs */ = {
 			isa = PBXGroup;
 			children = (
-				47089B2C242268C700FA50EB /* GFUserInfoHeaderVC.swift */,
+				473219D725AF3EC900018280 /* HeaderVC */,
 				47794C8C242354B3008EBDC3 /* ItemInfoVC */,
 			);
 			path = "Child VCs";
