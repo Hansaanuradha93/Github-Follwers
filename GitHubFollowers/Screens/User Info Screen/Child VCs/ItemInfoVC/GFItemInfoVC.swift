@@ -23,10 +23,7 @@ class GFItemInfoVC: UIViewController {
     // MARK: View Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureBackground()
-        layoutUI()
-        configureStackView()
-        configureActionButton()
+        configureUI()
     }
 }
 
@@ -41,42 +38,23 @@ extension GFItemInfoVC {
 // MARK: - Private Methods
 private extension GFItemInfoVC {
     
-    func configureActionButton() {
-        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
-    }
-    
-    
-    func configureBackground() {
+    func configureUI() {
         view.layer.cornerRadius = 18
         view.backgroundColor = .secondarySystemBackground
-    }
-    
-    
-    func configureStackView() {
+        
+        view.addSubviews(stackView, actionButton)
+        
+        let padding: CGFloat = 20
+        
+        stackView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 50))
+        actionButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: padding, bottom: padding, right: padding), size: .init(width: 0, height: 44))
+        
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         
         stackView.addArrangedSubview(itemInfoViewOne)
         stackView.addArrangedSubview(itemInfoViewTwo)
-    }
-    
-    
-    func layoutUI() {
-        view.addSubviews(stackView, actionButton)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        let padding: CGFloat = 20
-        
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            stackView.heightAnchor.constraint(equalToConstant: 50),
-            
-            actionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            actionButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
 }
