@@ -3,7 +3,6 @@ import UIKit
 class GFItemInfoVC: UIViewController {
 
     // MARK: Properties
-    let stackView = UIStackView()
     let itemInfoViewOne = GFItemView()
     let itemInfoViewTwo = GFItemView()
     let actionButton = GFButton()
@@ -42,19 +41,15 @@ private extension GFItemInfoVC {
         view.layer.cornerRadius = 18
         view.backgroundColor = .secondarySystemBackground
         
-        view.addSubviews(stackView, actionButton)
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         
         let padding: CGFloat = 20
-        
+
+        let stackView = UIStackView(arrangedSubviews: [itemInfoViewOne, itemInfoViewTwo])
+        stackView.distribution = .equalSpacing
+        view.addSubviews(stackView, actionButton)
+                
         stackView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 50))
         actionButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: padding, bottom: padding, right: padding), size: .init(width: 0, height: 44))
-        
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        
-        stackView.addArrangedSubview(itemInfoViewOne)
-        stackView.addArrangedSubview(itemInfoViewTwo)
-        
-        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
 }
