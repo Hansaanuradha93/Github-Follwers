@@ -27,17 +27,13 @@ class GFItemInfoVC: UIViewController {
 }
 
 
-// MARK: - Objc Methods
+// MARK: - Methods
 extension GFItemInfoVC {
-
-    @objc func actionButtonTapped() {}
-}
-
-
-// MARK: - Private Methods
-private extension GFItemInfoVC {
     
-    func configureUI() {
+    @objc func actionButtonTapped() {}
+
+    
+    private func configureUI() {
         view.layer.cornerRadius = 18
         view.backgroundColor = .secondarySystemBackground
         
