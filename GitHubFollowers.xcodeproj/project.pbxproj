@@ -339,7 +339,7 @@
 		4791008E2426156900071A0D /* Favourite List Screen */ = {
 			isa = PBXGroup;
 			children = (
-				47910099242682C900071A0D /* Dalegate */,
+				47910099242682C900071A0D /* Delegate */,
 				479100942426761500071A0D /* Data Soruce */,
 				4791008F242615BE00071A0D /* Table View Cells */,
 				47A3CDF423BA353E000A8E73 /* FavouriteListVC.swift */,
@@ -380,12 +380,12 @@
 			path = "Data Soruce";
 			sourceTree = "<group>";
 		};
-		47910099242682C900071A0D /* Dalegate */ = {
+		47910099242682C900071A0D /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
 				4791009A242682F400071A0D /* FavouriteDelegate.swift */,
 			);
-			path = Dalegate;
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
