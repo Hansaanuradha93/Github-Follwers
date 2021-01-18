@@ -12,9 +12,9 @@ class GFTabBar: UITabBarController {
 
 
 // MARK: - Private Methods
-extension GFTabBar {
+private extension GFTabBar {
     
-    private func createSearchNC() -> UINavigationController {
+    func createSearchNC() -> UINavigationController {
         let searchVC = SearchVC()
         searchVC.title = "Search"
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
@@ -23,7 +23,7 @@ extension GFTabBar {
     }
     
     
-    private func createFavouriteListNC() -> UINavigationController {
+    func createFavouriteListNC() -> UINavigationController {
         let favouriteListVC = FavouriteListVC()
         favouriteListVC.title = "Favourites"
         favouriteListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
