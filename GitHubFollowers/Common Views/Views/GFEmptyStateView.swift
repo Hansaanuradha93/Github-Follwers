@@ -10,8 +10,7 @@ class GFEmptyStateView: UIView {
     // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureMessageLabel()
-        configureLogoImageView()
+        configureUI()
     }
     
     
@@ -28,38 +27,21 @@ class GFEmptyStateView: UIView {
 // MARK: - Private Methods
 private extension GFEmptyStateView {
     
-    func configureMessageLabel() {
-        addSubview(messageLabel)
+    func configureUI() {
+        addSubviews(messageLabel, logoImageView)
+        
         messageLabel.numberOfLines = 3
         messageLabel.textColor = .secondaryLabel
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -100  : -150
-        let padding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20    : 40
-
-
-        NSLayoutConstraint.activate([
-            messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: topConstraintConstant),
-            messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            messageLabel.heightAnchor.constraint(equalToConstant: 200)
-        ])
-    }
-    
-    
-    func configureLogoImageView() {
-        addSubview(logoImageView)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.emptyState
         
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -100 : -150
         let bottomConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50  : 40
-        let padding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 150 : 170
-        
-        NSLayoutConstraint.activate([
-            logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: padding),
-            logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomConstraintConstant)
-        ])
+        let logoPadding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 150 : 170
+        let messagePadding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 40
+        let logoWidth: CGFloat = frame.width * 1.3
+
+        messageLabel.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: messagePadding, bottom: 0, right: messagePadding))
+        messageLabel.centerVerticallyInSuperView(padding: topConstraintConstant)
+        logoImageView.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: bottomConstraintConstant, right: -logoPadding), size: .init(width: logoWidth, height: logoWidth))
     }
 }
