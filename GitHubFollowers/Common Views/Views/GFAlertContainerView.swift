@@ -17,7 +17,6 @@ class GFAlertContainerView: UIView {
 extension GFAlertContainerView {
     
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
         layer.cornerRadius = 16
         layer.borderWidth = 2
