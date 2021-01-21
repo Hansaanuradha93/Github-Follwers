@@ -50,25 +50,12 @@ extension GFItemView {
     private func configure() {
         addSubviews(symbolImageView, titleLabel, countLabel)
         
-        symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor = .label
         
-        NSLayoutConstraint.activate([
-            symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            symbolImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            symbolImageView.widthAnchor.constraint(equalToConstant: 20),
-            symbolImageView.heightAnchor.constraint(equalToConstant: 20),
-            
-            titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 12),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 18),
-            
-            countLabel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor, constant: 4),
-            countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            countLabel.heightAnchor.constraint(equalToConstant: 18)
-        ])
+        symbolImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, size: .init(width: 20, height: 20))
+        titleLabel.centerVertically(in: symbolImageView)
+        titleLabel.anchor(top: nil, leading: symbolImageView.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 12, bottom: 0, right: 0))
+        countLabel.anchor(top: symbolImageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0))
     }
 }
