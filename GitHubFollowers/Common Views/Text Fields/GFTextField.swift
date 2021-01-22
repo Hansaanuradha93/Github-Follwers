@@ -17,7 +17,7 @@ class GFTextField: UITextField {
 extension GFTextField {
     
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
+//        translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 10
         layer.borderWidth = 2
