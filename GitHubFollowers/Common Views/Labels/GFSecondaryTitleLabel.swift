@@ -28,6 +28,6 @@ extension GFSecondaryTitleLabel {
         adjustsFontForContentSizeCategory = true
         minimumScaleFactor = 0.90
         lineBreakMode = .byTruncatingTail
-        translatesAutoresizingMaskIntoConstraints = false
+//        translatesAutoresizingMaskIntoConstraints = false
     }
 }
