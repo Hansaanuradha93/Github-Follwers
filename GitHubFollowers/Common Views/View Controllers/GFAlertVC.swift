@@ -45,10 +45,10 @@ private extension GFAlertVC {
     func configureUI() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         
-        titleLabel.text = alertTitle ?? "Something went wrong!"
-        messageLabel.text = message ?? "Unable to complete request"
+        titleLabel.text = alertTitle ?? Strings.somethingWentWrong
+        messageLabel.text = message ?? Strings.unableToCompleteTheRequest
         messageLabel.numberOfLines = 4
-        actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
+        actionButton.setTitle(buttonTitle ?? Strings.ok, for: .normal)
         actionButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
         
         view.addSubviews(containerView, titleLabel, messageLabel, actionButton)
