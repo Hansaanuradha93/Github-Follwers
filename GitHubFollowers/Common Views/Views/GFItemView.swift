@@ -32,16 +32,16 @@ extension GFItemView {
         switch itemInfoType {
         case .repos:
             symbolImageView.image = SFSymbols.repos
-            titleLabel.text = "Public Repos"
+            titleLabel.text = Strings.publicRepos
         case .gists:
             symbolImageView.image = SFSymbols.gists
-            titleLabel.text = "Public Gists"
+            titleLabel.text = Strings.publicGists
         case .followers:
             symbolImageView.image = SFSymbols.followers
-            titleLabel.text = "Followers"
+            titleLabel.text = Strings.followers
         case .following:
             symbolImageView.image = SFSymbols.followings
-            titleLabel.text = "Following"
+            titleLabel.text = Strings.following
         }
         countLabel.text = "\(count)"
     }
