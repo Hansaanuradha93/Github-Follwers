@@ -5,7 +5,7 @@ class SearchVC: UIViewController {
     // MARK: Properties
     private let logoImageView = UIImageView()
     private let usernameTextField = GFTextField()
-    private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Follwers")
+    private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: Strings.getFollowers)
     private var isUsernameEntered: Bool { return  !usernameTextField.text!.isEmpty }
     
     
@@ -28,7 +28,7 @@ private extension SearchVC {
     
     @objc func pushFollwersViewController() {
         guard isUsernameEntered else {
-            presentGFAlertOnMainTread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀.", buttonTitle: "Ok")
+            presentGFAlertOnMainTread(title: Strings.emptyUsername, message: Strings.pleaseEnterUsername, buttonTitle: Strings.ok)
             return
         }
         usernameTextField.resignFirstResponder()
