@@ -63,7 +63,7 @@ private extension FollowersListVC {
             case .success(let user):
                 self.saveFavourite(user: user)
             case .failure(let error):
-                self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
             }
         }
     }
@@ -90,7 +90,7 @@ private extension FollowersListVC {
         let searchViewController = UISearchController()
         searchViewController.searchResultsUpdater = self
         searchViewController.searchBar.delegate = self
-        searchViewController.searchBar.placeholder = "Search for a username"
+        searchViewController.searchBar.placeholder = Strings.searchForAUsername
         searchViewController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchViewController
     }
@@ -114,7 +114,7 @@ private extension FollowersListVC {
             case .success(let followers):
                 self.updateUI(with: followers)
             case .failure(let error):
-                self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainTread(title: Strings.badSuffHappened, message: error.rawValue, buttonTitle: Strings.ok)
             }
             
             self.isLoadingFollowers = false
@@ -126,7 +126,7 @@ private extension FollowersListVC {
         if followers.count < 100 { self.hasMoreFollowers = false }
         self.followers.append(contentsOf: followers)
         if self.followers.isEmpty {
-            let message = "This user doesn't have any followers. Go follow them 😀"
+            let message = Strings.userDoesNotHaveFollowers
             DispatchQueue.main.async {
                 self.showEmptyStateView(with: message, in: self.view)
                 self.navigationItem.searchController?.searchBar.isHidden = true
@@ -166,10 +166,10 @@ private extension FollowersListVC {
         PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self ] error in
             guard let self = self else { return }
             guard let error = error else {
-                self.presentGFAlertOnMainTread(title: "Success!", message: "You have successfully favourited this user 🎉", buttonTitle: "Ok")
+                self.presentGFAlertOnMainTread(title: Strings.success, message: Strings.youHaveSuccessfullyFavouritedTheUser, buttonTitle: Strings.ok)
                 return
             }
-            self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
         }
     }
 }
