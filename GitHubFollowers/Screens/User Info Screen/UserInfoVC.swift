@@ -69,7 +69,7 @@ private extension UserInfoVC {
             
             case .failure(let error):
                 print(error)
-                self.presentGFAlertOnMainTread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "OK")
+                self.presentGFAlertOnMainTread(title: Strings.badSuffHappened, message: error.rawValue, buttonTitle: Strings.ok)
             }
         }
     }
@@ -94,7 +94,7 @@ private extension UserInfoVC {
         self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
         self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
         let createdAt = user.createdAt ?? Date()
-        self.dateLabel.text = "GitHub since \(String(describing: createdAt.convertToMonthYearFormat()))"
+        self.dateLabel.text = "\(Strings.githubSince) \(String(describing: createdAt.convertToMonthYearFormat()))"
     }
     
     
@@ -126,7 +126,7 @@ extension UserInfoVC: GFRepoItemVCDelegate {
     
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl ?? "") else {
-            presentGFAlertOnMainTread(title: "Invalid URL", message: "The url attached to this user is invalid.", buttonTitle: "Ok")
+            presentGFAlertOnMainTread(title: Strings.invalidUrl, message: Strings.theUrlAttachedToThisUserIsInvalid, buttonTitle: Strings.ok)
             return
         }
         presentSafariVC(with: url)
@@ -139,7 +139,7 @@ extension UserInfoVC: GFFollowerItemVCDelegate {
     
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {
-            presentGFAlertOnMainTread(title: "No Followers", message: "This user doesn't have any followers. Go follow this user 😀.", buttonTitle: "Ok")
+            presentGFAlertOnMainTread(title: Strings.noFollowers, message: Strings.thisUserHasNoFollowers, buttonTitle: Strings.ok)
             return
         }
         delegate.didRequestForFollowers(for: user.login ?? "")
