@@ -46,3 +46,42 @@ enum DeviceTypes {
         return isiPhoneX || isiPhoneXsMaxAndXr
     }
 }
+
+
+// MARK: - Strings
+struct Strings {
+    
+    // Titles
+    static let search = "Search"
+    static let favourites = "Favourites"
+    
+    // Placeholders
+    static let enterAUsername = "Enter a username"
+    static let searchForAUsername = "Search for a username"
+    
+    // Alerts
+    static let success = "Success!"
+    static let somethingWentWrong = "Something went wrong!"
+    static let unableToCompleteTheRequest = "Unable to complete request"
+    static let emptyUsername = "Empty Username"
+    static let pleaseEnterUsername = "Please enter a username. We need to know who to look for 😀."
+    static let badSuffHappened = "Bad Stuff Happened"
+    static let userDoesNotHaveFollowers = "This user doesn't have any followers. Go follow them 😀"
+    static let youHaveSuccessfullyFavouritedTheUser = "You have successfully favourited this user 🎉"
+    static let invalidUrl = "Invalid URL"
+    static let theUrlAttachedToThisUserIsInvalid = "The url attached to this user is invalid."
+    static let noFollowers = "No Followers"
+    static let thisUserHasNoFollowers = "This user doesn't have any followers. Go follow this user 😀."
+    
+    // Labels
+    static let publicRepos = "Public Repos"
+    static let publicGists = "Public Gists"
+    static let followers = "Followers"
+    static let following = "Following"
+    static let githubSince = "GitHub since"
+    
+    // Buttons
+    static let ok = "Ok"
+    static let getFollowers = "Get Follwers"
+}
+
