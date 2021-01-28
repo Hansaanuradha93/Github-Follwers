@@ -35,7 +35,7 @@ private extension GFRepoItemVC {
     func congifureItems() {
         itemInfoViewOne.setup(itemInfoType: .repos, withCount: user.publicRepos ?? 0)
         itemInfoViewTwo.setup(itemInfoType: .gists, withCount: user.publicGists ?? 0)
-        actionButton.setup(backgroundColor: .systemPurple, title: "Github Profile")
+        actionButton.setup(backgroundColor: .systemPurple, title: Strings.githubProfile)
     }
 }
 
