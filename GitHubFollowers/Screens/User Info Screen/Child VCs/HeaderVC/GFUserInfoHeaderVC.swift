@@ -37,8 +37,8 @@ private extension GFUserInfoHeaderVC {
     func configureUIElements() {
         usernameLabel.text = user.login ?? ""
         nameLabel.text = user.name ?? ""
-        locationLabel.text = user.location ?? "No Location"
-        bioLabel.text = user.bio ?? "No bio available"
+        locationLabel.text = user.location ?? Strings.noLocation
+        bioLabel.text = user.bio ?? Strings.noBioAvailable
         bioLabel.numberOfLines = 3
         locationImageView.image = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
