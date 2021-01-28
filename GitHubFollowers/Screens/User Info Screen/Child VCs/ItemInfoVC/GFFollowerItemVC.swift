@@ -35,7 +35,7 @@ private extension GFFollowerItemVC {
     func congifureItems() {
         itemInfoViewOne.setup(itemInfoType: .followers, withCount: user.followers ?? 0)
         itemInfoViewTwo.setup(itemInfoType: .following, withCount: user.following ?? 0)
-        actionButton.setup(backgroundColor: .systemGreen, title: "Get Followers")
+        actionButton.setup(backgroundColor: .systemGreen, title: Strings.getFollowers)
     }
 }
 
