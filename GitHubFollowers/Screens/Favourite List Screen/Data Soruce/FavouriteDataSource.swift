@@ -40,7 +40,7 @@ extension FavouriteDataSource: UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .left)
                 return
             }
-            self.viewController.presentGFAlertOnMainTread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
+            self.viewController.presentGFAlertOnMainTread(title: Strings.unableToRemove, message: error.rawValue, buttonTitle: Strings.ok)
         }
     }
 }
