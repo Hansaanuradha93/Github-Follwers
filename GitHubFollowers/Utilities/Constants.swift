@@ -72,6 +72,8 @@ struct Strings {
     static let theUrlAttachedToThisUserIsInvalid = "The url attached to this user is invalid."
     static let noFollowers = "No Followers"
     static let thisUserHasNoFollowers = "This user doesn't have any followers. Go follow this user 😀."
+    static let unableToRemove = "Unable to remove"
+    static let noFavouritesGoFollowSome = "No favourites?\nGo follow a user from follower screen 😀"
     
     // Labels
     static let publicRepos = "Public Repos"
@@ -79,9 +81,12 @@ struct Strings {
     static let followers = "Followers"
     static let following = "Following"
     static let githubSince = "GitHub since"
+    static let noLocation = "No Location"
+    static let noBioAvailable = "No bio available"
     
     // Buttons
     static let ok = "Ok"
-    static let getFollowers = "Get Follwers"
+    static let getFollowers = "Get Followers"
+    static let githubProfile = "Github Profile"
 }
 
