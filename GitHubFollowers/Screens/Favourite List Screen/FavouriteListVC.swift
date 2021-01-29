@@ -29,7 +29,7 @@ private extension FavouriteListVC {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        title = "Favourites"
+        title = Strings.favourites
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -41,7 +41,7 @@ private extension FavouriteListVC {
             case .success(let favourites):
                 self.updateUI(withFavourites: favourites)
             case .failure(let error):
-                self.presentGFAlertOnMainTread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
             }
         }
     }
@@ -49,7 +49,7 @@ private extension FavouriteListVC {
     
     func updateUI(withFavourites favourites: [Follower]) {
         if favourites.isEmpty {
-            let message = "No favourites?\nGo follow a user from follower screen 😀"
+            let message = Strings.noFavouritesGoFollowSome
             DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
             return
         }
