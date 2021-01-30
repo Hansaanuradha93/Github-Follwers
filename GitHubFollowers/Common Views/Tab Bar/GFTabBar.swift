@@ -5,14 +5,19 @@ class GFTabBar: UITabBarController {
     // MARK: View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemGreen
-        viewControllers = [createSearchNC(), createFavouriteListNC()]
+        configureUI()
     }
 }
 
 
 // MARK: - Private Methods
 private extension GFTabBar {
+    
+    func configureUI() {
+        UITabBar.appearance().tintColor = .systemGreen
+        viewControllers = [createSearchNC(), createFavouriteListNC()]
+    }
+    
     
     func createSearchNC() -> UINavigationController {
         let searchVC = SearchVC()
