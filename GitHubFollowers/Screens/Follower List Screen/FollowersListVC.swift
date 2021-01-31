@@ -100,33 +100,33 @@ private extension FollowersListVC {
     
     
     func getFollowers(username: String, page: Int) {
-        self.showLoadingView()
-        self.addButton.isEnabled = false
-        self.navigationItem.searchController?.searchBar.isHidden = true
-        self.isLoadingFollowers = true
+        showLoadingView()
+        addButton.isEnabled = false
+        navigationItem.searchController?.searchBar.isHidden = true
+        isLoadingFollowers = true
 
-        NetworkManager.shared.getFollwers(for: username, page: page) { [weak self] result in
+        viewModel.getFollowers(username: username, page: page) { [weak self] followers, error in
             guard let self = self else { return }
             self.dismissLoadingView()
+            self.isLoadingFollowers = false
             DispatchQueue.main.async {
                 self.addButton.isEnabled = true
                 self.navigationItem.searchController?.searchBar.isHidden = false
             }
             
-            switch result {
-            case .success(let followers):
-                self.updateUI(with: followers)
-            case .failure(let error):
-                self.presentGFAlertOnMainTread(title: Strings.badSuffHappened, message: error.rawValue, buttonTitle: Strings.ok)
+            if let error = error {
+                self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
+                return
             }
             
-            self.isLoadingFollowers = false
+            guard let followers = followers else { return }
+            self.updateUI(with: followers)
         }
     }
     
     
     func updateUI(with followers: [Follower]) {
-        if followers.count < 100 { self.hasMoreFollowers = false }
+        if followers.count < NetworkManager.shared.perPage { self.hasMoreFollowers = false }
         self.followers.append(contentsOf: followers)
         if self.followers.isEmpty {
             let message = Strings.userDoesNotHaveFollowers
