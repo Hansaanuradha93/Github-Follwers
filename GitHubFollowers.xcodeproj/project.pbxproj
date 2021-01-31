@@ -48,6 +48,7 @@
 		47C41B8623BCC0C500A94703 /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C41B8523BCC0C500A94703 /* GFTitleLabel.swift */; };
 		47C41B8823BCC4B000A94703 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C41B8723BCC4B000A94703 /* GFBodyLabel.swift */; };
 		47C41B8A23BCC76100A94703 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C41B8923BCC76100A94703 /* GFAlertVC.swift */; };
+		47E02ECC25C70A4D00BD404E /* FollowersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		47C41B8523BCC0C500A94703 /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		47C41B8723BCC4B000A94703 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		47C41B8923BCC76100A94703 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
+		47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 			children = (
 				47910090242615D400071A0D /* Collection View Cells */,
 				47C41B8123BCB3AB00A94703 /* FollowersListVC.swift */,
+				47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */,
 			);
 			path = "Follower List Screen";
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				47089B2F2422695D00FA50EB /* GFSecondaryTitleLabel.swift in Sources */,
 				4756637A242759C6000188C5 /* DataLoadingVC.swift in Sources */,
 				47C41B8A23BCC76100A94703 /* GFAlertVC.swift in Sources */,
+				47E02ECC25C70A4D00BD404E /* FollowersListVM.swift in Sources */,
 				47879E6023B90A7200A7A352 /* AppDelegate.swift in Sources */,
 				47B37E0E23CC7A9500E02651 /* GFEmptyStateView.swift in Sources */,
 				47C41B8623BCC0C500A94703 /* GFTitleLabel.swift in Sources */,

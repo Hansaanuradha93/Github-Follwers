@@ -8,6 +8,8 @@ enum Section {
 class FollowersListVC: DataLoadingVC {
     
     // MARK: Properties
+    private let viewModel = FollowersListVM()
+    
     private var collectionView: UICollectionView!
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     private var addButton: UIBarButtonItem!
@@ -55,16 +57,17 @@ class FollowersListVC: DataLoadingVC {
 private extension FollowersListVC {
     
     @objc func addFavourite() {
-        self.showLoadingView()
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+        showLoadingView()
+        
+        viewModel.getUserInfo(for: username) { [weak self] user, error in
             guard let self = self else { return }
             self.dismissLoadingView()
-            switch result {
-            case .success(let user):
-                self.saveFavourite(user: user)
-            case .failure(let error):
+            if let error = error {
                 self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
+                return
             }
+            guard let user = user else { return }
+            self.saveFavourite(user: user)
         }
     }
     
