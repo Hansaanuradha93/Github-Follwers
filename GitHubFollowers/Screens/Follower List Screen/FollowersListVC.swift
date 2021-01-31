@@ -166,13 +166,14 @@ private extension FollowersListVC {
     
     func saveFavourite(user: User) {
         let favourite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-        PersistenceManager.updateWith(favourite: favourite, actionType: .add) { [weak self ] error in
+        
+        viewModel.saveFavourite(favourite: favourite) { [weak self] status, message in
             guard let self = self else { return }
-            guard let error = error else {
-                self.presentGFAlertOnMainTread(title: Strings.success, message: Strings.youHaveSuccessfullyFavouritedTheUser, buttonTitle: Strings.ok)
-                return
+            if status {
+                self.presentGFAlertOnMainTread(title: Strings.success, message: message, buttonTitle: Strings.ok)
+            } else {
+                self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: message, buttonTitle: Strings.ok)
             }
-            self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
         }
     }
 }

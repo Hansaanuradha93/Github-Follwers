@@ -2,6 +2,17 @@ import UIKit
 
 class FollowersListVM {
     
+    func saveFavourite(favourite: Follower, completion: @escaping (Bool, String) -> ()) {
+        PersistenceManager.updateWith(favourite: favourite, actionType: .add) { error in
+            if let error = error {
+                completion(false, error.rawValue)
+                return
+            }
+            completion(true, Strings.youHaveSuccessfullyFavouritedTheUser)
+        }
+    }
+    
+    
     func getFollowers(username: String, page: Int, completion: @escaping ([Follower]?, GFError?) -> ()) {
         NetworkManager.shared.getFollwers(for: username, page: page) { result in
             switch result {
