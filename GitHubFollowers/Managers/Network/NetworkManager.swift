@@ -4,8 +4,8 @@ class NetworkManager {
     
     // MARK: Properties
     static let shared = NetworkManager()
-    private let perPage = 100
     private let cache = NSCache<NSString, UIImage>()
+    let perPage = 20
     
     
     // MARK: Initializers
