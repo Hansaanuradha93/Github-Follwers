@@ -8,6 +8,7 @@ protocol UserInfoVCDelegate: class {
 class UserInfoVC: DataLoadingVC {
     
     // MARK: Properties
+    private let viewModel = UserInfoVM()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -58,19 +59,18 @@ private extension UserInfoVC {
     
     
     func getUserInfo(username: String) {
-        self.showLoadingView()
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-        guard let self = self else { return }
+        showLoadingView()
+        viewModel.getUserInfo(username: username) { [weak self] user, error in
+            guard let self = self else { return }
             self.dismissLoadingView()
             
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async { self.configureUIElements(with: user) }
-            
-            case .failure(let error):
-                print(error)
+            if let error = error {
                 self.presentGFAlertOnMainTread(title: Strings.badSuffHappened, message: error.rawValue, buttonTitle: Strings.ok)
+                return
             }
+            
+            guard let user = user else { return }
+            DispatchQueue.main.async { self.configureUIElements(with: user) }
         }
     }
     
