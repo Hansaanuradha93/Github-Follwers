@@ -3,10 +3,11 @@ import UIKit
 class FavouriteListVC: DataLoadingVC {
 
     // MARK: Properties
+    private let viewModel = FavouriteListVM()
     private var tableView: UITableView!
     private var dataSource: FavouriteDataSource!
     private var favourites: [Follower] = []
-    var delegate: FavouriteDelegate!
+    private var delegate: FavouriteDelegate!
 
     
     // MARK: View Controller
@@ -35,14 +36,15 @@ private extension FavouriteListVC {
     
     
     func getFavourites() {
-        PersistenceManager.retrieveFavourites { [weak self] result in
+        viewModel.getFavourites { [weak self] favourites, error in
             guard let self = self else { return }
-            switch result {
-            case .success(let favourites):
-                self.updateUI(withFavourites: favourites)
-            case .failure(let error):
+            if let error = error {
                 self.presentGFAlertOnMainTread(title: Strings.somethingWentWrong, message: error.rawValue, buttonTitle: Strings.ok)
+                return
             }
+            
+            guard let favourites = favourites else { return }
+            self.updateUI(withFavourites: favourites)
         }
     }
     

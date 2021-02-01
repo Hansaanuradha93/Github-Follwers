@@ -11,6 +11,7 @@
 		47089B2F2422695D00FA50EB /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47089B2E2422695D00FA50EB /* GFSecondaryTitleLabel.swift */; };
 		47089B3124227C8A00FA50EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47089B3024227C8A00FA50EB /* Constants.swift */; };
 		472207C525C8534F0087A868 /* UserInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472207C425C8534F0087A868 /* UserInfoVM.swift */; };
+		472207C825C855950087A868 /* FavouriteListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472207C725C855950087A868 /* FavouriteListVM.swift */; };
 		47273A9C23D36AC300B1411E /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47273A9B23D36AC300B1411E /* UserInfoVC.swift */; };
 		472B218F23C95A520042419D /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472B218E23C95A520042419D /* UIHelper.swift */; };
 		474C5D6B242485CD00198D63 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C5D6A242485CD00198D63 /* PersistenceManager.swift */; };
@@ -57,6 +58,7 @@
 		47089B2E2422695D00FA50EB /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		47089B3024227C8A00FA50EB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		472207C425C8534F0087A868 /* UserInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVM.swift; sourceTree = "<group>"; };
+		472207C725C855950087A868 /* FavouriteListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListVM.swift; sourceTree = "<group>"; };
 		47273A9B23D36AC300B1411E /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		472B218E23C95A520042419D /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		474C5D6A242485CD00198D63 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				479100942426761500071A0D /* Data Soruce */,
 				4791008F242615BE00071A0D /* Table View Cells */,
 				47A3CDF423BA353E000A8E73 /* FavouriteListVC.swift */,
+				472207C725C855950087A868 /* FavouriteListVM.swift */,
 			);
 			path = "Favourite List Screen";
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				4778FCCF23BF620500B0E55D /* Follower.swift in Sources */,
 				47910093242618A000071A0D /* FavouriteTableViewCell.swift in Sources */,
 				47794C8724234BD3008EBDC3 /* GFItemInfoVC.swift in Sources */,
+				472207C825C855950087A868 /* FavouriteListVM.swift in Sources */,
 				476CD4EC242A7565009D4F94 /* UIView+Ext.swift in Sources */,
 				4768D70823C33C2D00D6F9FF /* GFAvatarImageView.swift in Sources */,
 				472B218F23C95A520042419D /* UIHelper.swift in Sources */,
