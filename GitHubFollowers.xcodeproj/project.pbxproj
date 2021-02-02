@@ -51,6 +51,7 @@
 		47C41B8823BCC4B000A94703 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C41B8723BCC4B000A94703 /* GFBodyLabel.swift */; };
 		47C41B8A23BCC76100A94703 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C41B8923BCC76100A94703 /* GFAlertVC.swift */; };
 		47E02ECC25C70A4D00BD404E /* FollowersListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */; };
+		47E5851325C9B349001B9311 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E5851225C9B349001B9311 /* SearchVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		47C41B8723BCC4B000A94703 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		47C41B8923BCC76100A94703 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVM.swift; sourceTree = "<group>"; };
+		47E5851225C9B349001B9311 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				47A3CDF223BA3511000A8E73 /* SearchVC.swift */,
+				47E5851225C9B349001B9311 /* SearchVM.swift */,
 			);
 			path = "Search Screen";
 			sourceTree = "<group>";
@@ -327,7 +330,7 @@
 		4791008C2426154100071A0D /* Follower List Screen */ = {
 			isa = PBXGroup;
 			children = (
-				47910090242615D400071A0D /* Collection View Cells */,
+				47910090242615D400071A0D /* Cells */,
 				47E5850F25C9B2CA001B9311 /* Follower List */,
 			);
 			path = "Follower List Screen";
@@ -347,26 +350,26 @@
 			children = (
 				47910099242682C900071A0D /* Delegate */,
 				479100942426761500071A0D /* Data Soruce */,
-				4791008F242615BE00071A0D /* TableViewCells */,
+				4791008F242615BE00071A0D /* Cells */,
 				47E584E125C9B23D001B9311 /* FavouriteList */,
 			);
 			path = "Favourite List Screen";
 			sourceTree = "<group>";
 		};
-		4791008F242615BE00071A0D /* TableViewCells */ = {
+		4791008F242615BE00071A0D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				47910092242618A000071A0D /* FavouriteTableViewCell.swift */,
 			);
-			path = TableViewCells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		47910090242615D400071A0D /* Collection View Cells */ = {
+		47910090242615D400071A0D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				4768D70423C33B2200D6F9FF /* FollowerCollectionViewCell.swift */,
 			);
-			path = "Collection View Cells";
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		479100912426160700071A0D /* Child VCs */ = {
@@ -500,6 +503,7 @@
 				472207C825C855950087A868 /* FavouriteListVM.swift in Sources */,
 				476CD4EC242A7565009D4F94 /* UIView+Ext.swift in Sources */,
 				4768D70823C33C2D00D6F9FF /* GFAvatarImageView.swift in Sources */,
+				47E5851325C9B349001B9311 /* SearchVM.swift in Sources */,
 				472B218F23C95A520042419D /* UIHelper.swift in Sources */,
 				479100982426797000071A0D /* FavouriteDataSource.swift in Sources */,
 				4778FCC223BF44D500B0E55D /* UIViewController+Ext.swift in Sources */,

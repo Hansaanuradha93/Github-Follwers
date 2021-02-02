@@ -3,6 +3,7 @@ import UIKit
 class SearchVC: UIViewController {
 
     // MARK: Properties
+    private let viewModel = SearchVM()
     private let logoImageView = UIImageView()
     private let usernameTextField = GFTextField()
     private let callToActionButton = GFButton(backgroundColor: .systemGreen, title: Strings.getFollowers)
