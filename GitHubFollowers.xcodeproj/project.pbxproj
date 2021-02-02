@@ -328,8 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				47910090242615D400071A0D /* Collection View Cells */,
-				47C41B8123BCB3AB00A94703 /* FollowersListVC.swift */,
-				47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */,
+				47E5850F25C9B2CA001B9311 /* Follower List */,
 			);
 			path = "Follower List Screen";
 			sourceTree = "<group>";
@@ -338,8 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				479100912426160700071A0D /* Child VCs */,
-				47273A9B23D36AC300B1411E /* UserInfoVC.swift */,
-				472207C425C8534F0087A868 /* UserInfoVM.swift */,
+				47E5850D25C9B2A6001B9311 /* User Info */,
 			);
 			path = "User Info Screen";
 			sourceTree = "<group>";
@@ -349,19 +347,18 @@
 			children = (
 				47910099242682C900071A0D /* Delegate */,
 				479100942426761500071A0D /* Data Soruce */,
-				4791008F242615BE00071A0D /* Table View Cells */,
-				47A3CDF423BA353E000A8E73 /* FavouriteListVC.swift */,
-				472207C725C855950087A868 /* FavouriteListVM.swift */,
+				4791008F242615BE00071A0D /* TableViewCells */,
+				47E584E125C9B23D001B9311 /* FavouriteList */,
 			);
 			path = "Favourite List Screen";
 			sourceTree = "<group>";
 		};
-		4791008F242615BE00071A0D /* Table View Cells */ = {
+		4791008F242615BE00071A0D /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				47910092242618A000071A0D /* FavouriteTableViewCell.swift */,
 			);
-			path = "Table View Cells";
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		47910090242615D400071A0D /* Collection View Cells */ = {
@@ -395,6 +392,33 @@
 				4791009A242682F400071A0D /* FavouriteDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		47E584E125C9B23D001B9311 /* FavouriteList */ = {
+			isa = PBXGroup;
+			children = (
+				47A3CDF423BA353E000A8E73 /* FavouriteListVC.swift */,
+				472207C725C855950087A868 /* FavouriteListVM.swift */,
+			);
+			path = FavouriteList;
+			sourceTree = "<group>";
+		};
+		47E5850D25C9B2A6001B9311 /* User Info */ = {
+			isa = PBXGroup;
+			children = (
+				47273A9B23D36AC300B1411E /* UserInfoVC.swift */,
+				472207C425C8534F0087A868 /* UserInfoVM.swift */,
+			);
+			path = "User Info";
+			sourceTree = "<group>";
+		};
+		47E5850F25C9B2CA001B9311 /* Follower List */ = {
+			isa = PBXGroup;
+			children = (
+				47C41B8123BCB3AB00A94703 /* FollowersListVC.swift */,
+				47E02ECB25C70A4D00BD404E /* FollowersListVM.swift */,
+			);
+			path = "Follower List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
