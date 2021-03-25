@@ -75,8 +75,8 @@ private extension FavouriteListVC {
     
     
     func setDataSourceAndDelegate(with favourites: [Follower]) {
-//        dataSource = FavouriteDataSource(favourites: favourites, viewController: self)
-//        delegate = FavouriteDelegate(favourites: favourites, navigationController: self.navigationController)
+        dataSource = FavouriteDataSource(favourites: favourites, viewController: self)
+        delegate = FavouriteDelegate(favourites: favourites, navigationController: self.navigationController)
         tableView.dataSource = dataSource
         tableView.delegate = delegate
     }
