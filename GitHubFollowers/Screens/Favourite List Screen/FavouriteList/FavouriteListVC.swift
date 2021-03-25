@@ -78,6 +78,6 @@ private extension FavouriteListVC {
         dataSource = FavouriteDataSource(favourites: favourites, viewController: self)
         delegate = FavouriteDelegate(favourites: favourites, navigationController: self.navigationController)
         tableView.dataSource = dataSource
-        tableView.delegate = delegate
+//        tableView.delegate = delegate
     }
 }
