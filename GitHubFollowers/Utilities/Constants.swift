@@ -89,4 +89,3 @@ struct Strings {
     static let getFollowers = "Get Followers"
     static let githubProfile = "Github Profile"
 }
-
