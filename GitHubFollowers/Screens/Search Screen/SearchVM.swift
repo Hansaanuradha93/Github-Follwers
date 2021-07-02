@@ -1,3 +1,3 @@
 import UIKit
 
-class SearchVM {}
+final class SearchVM {}
