@@ -1,6 +1,6 @@
 import UIKit
 
-class FollowersListVM {
+final class FollowersListVM {
     
     func saveFavourite(favourite: Follower, completion: @escaping (Bool, String) -> ()) {
         PersistenceManager.updateWith(favourite: favourite, actionType: .add) { error in
