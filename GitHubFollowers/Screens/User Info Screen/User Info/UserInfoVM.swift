@@ -1,6 +1,6 @@
 import UIKit
 
-class UserInfoVM {
+final class UserInfoVM {
     
     func getUserInfo(username: String, completion: @escaping (User?, GFError?) -> ()) {
         NetworkManager.shared.getUserInfo(for: username) { result in
