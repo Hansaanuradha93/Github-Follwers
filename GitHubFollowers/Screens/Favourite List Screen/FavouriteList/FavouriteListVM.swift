@@ -1,6 +1,6 @@
 import UIKit
 
-class FavouriteListVM {
+final class FavouriteListVM {
     
     func getFavourites(completion: @escaping ([Follower]?, GFError?) -> ()) {
         PersistenceManager.retrieveFavourites { result in
