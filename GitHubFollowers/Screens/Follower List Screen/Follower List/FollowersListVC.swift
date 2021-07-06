@@ -13,15 +13,7 @@ class FollowersListVC: DataLoadingVC {
     private var collectionView: UICollectionView!
     private var datasource: UICollectionViewDiffableDataSource<Section, Follower>!
     private var addButton: UIBarButtonItem!
-
     private var username: String!
-    private var followers: [Follower] = []
-    private var filteredFollowers: [Follower] = []
-    private var isSearching: Bool = false
-    private var page: Int = 1
-    private var hasMoreFollowers: Bool = true
-    private var isLoadingFollowers: Bool = false
-    private var lastScrollPosition: CGFloat = 0
     
     
     // MARK: Initializers
@@ -41,7 +33,7 @@ class FollowersListVC: DataLoadingVC {
         configureViewController()
         configureCollectionView()
         configureSearchViewController()
-        getFollowers(username: username, page: page)
+        getFollowers(username: username, page: viewModel.page)
         configureDatasoruce()
     }
     
@@ -103,12 +95,12 @@ private extension FollowersListVC {
         showLoadingView()
         addButton.isEnabled = false
         navigationItem.searchController?.searchBar.isHidden = true
-        isLoadingFollowers = true
+        viewModel.isLoadingFollowers = true
 
         viewModel.getFollowers(username: username, page: page) { [weak self] followers, error in
             guard let self = self else { return }
             self.dismissLoadingView()
-            self.isLoadingFollowers = false
+            self.viewModel.isLoadingFollowers = false
             DispatchQueue.main.async {
                 self.addButton.isEnabled = true
                 self.navigationItem.searchController?.searchBar.isHidden = false
@@ -126,9 +118,9 @@ private extension FollowersListVC {
     
     
     func updateUI(with followers: [Follower]) {
-        if followers.count < NetworkManager.shared.perPage { self.hasMoreFollowers = false }
-        self.followers.append(contentsOf: followers)
-        if self.followers.isEmpty {
+        if followers.count < NetworkManager.shared.perPage { self.viewModel.hasMoreFollowers = false }
+        self.viewModel.followers.append(contentsOf: followers)
+        if self.viewModel.followers.isEmpty {
             let message = Strings.userDoesNotHaveFollowers
             DispatchQueue.main.async {
                 self.showEmptyStateView(with: message, in: self.view)
@@ -136,7 +128,7 @@ private extension FollowersListVC {
             }
             return
         }
-        self.updateData(on: self.followers)
+        self.updateData(on: self.viewModel.followers)
     }
     
     
@@ -158,9 +150,9 @@ private extension FollowersListVC {
     
     
     func stopSearching() {
-        updateData(on: followers)
-        filteredFollowers.removeAll()
-        isSearching = false
+        updateData(on: viewModel.followers)
+        viewModel.filteredFollowers.removeAll()
+        viewModel.isSearching = false
     }
     
     
@@ -183,7 +175,7 @@ private extension FollowersListVC {
 extension FollowersListVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let activeArray = isSearching ? filteredFollowers : followers
+        let activeArray = viewModel.isSearching ? viewModel.filteredFollowers : viewModel.followers
         let follower = activeArray[indexPath.item]
         let destVC = UserInfoVC(username: follower.login ?? "")
         destVC.delegate = self
@@ -197,14 +189,14 @@ extension FollowersListVC: UICollectionViewDelegate {
 extension FollowersListVC {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        lastScrollPosition = scrollView.contentOffset.y
+        viewModel.lastScrollPosition = scrollView.contentOffset.y
     }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if lastScrollPosition < scrollView.contentOffset.y {
+        if viewModel.lastScrollPosition < scrollView.contentOffset.y {
             navigationItem.hidesSearchBarWhenScrolling = true
-        } else if lastScrollPosition > scrollView.contentOffset.y {
+        } else if viewModel.lastScrollPosition > scrollView.contentOffset.y {
             navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
@@ -216,9 +208,9 @@ extension FollowersListVC {
         let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers, !isLoadingFollowers else { return }
-            page += 1
-            getFollowers(username: username, page: page)
+            guard viewModel.hasMoreFollowers, !viewModel.isLoadingFollowers else { return }
+            viewModel.page += 1
+            getFollowers(username: username, page: viewModel.page)
         }
     }
 }
@@ -228,13 +220,13 @@ extension FollowersListVC {
 extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        isSearching = true
+        viewModel.isSearching = true
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {
             stopSearching()
             return
         }
-        filteredFollowers = followers.filter { ($0.login?.lowercased().contains(filter.lowercased()) ?? false) }
-        updateData(on: filteredFollowers)
+        viewModel.filteredFollowers = viewModel.followers.filter { ($0.login?.lowercased().contains(filter.lowercased()) ?? false) }
+        updateData(on: viewModel.filteredFollowers)
     }
     
     
@@ -251,11 +243,11 @@ extension FollowersListVC: UserInfoVCDelegate {
     func didRequestForFollowers(for username: String) {
         self.username = username
         title = username
-        page = 1
-        followers.removeAll()
-        filteredFollowers.removeAll()
+        viewModel.page = 1
+        viewModel.followers.removeAll()
+        viewModel.filteredFollowers.removeAll()
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-        getFollowers(username: username, page: page)
+        getFollowers(username: username, page: viewModel.page)
     }
 }
 
