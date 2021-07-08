@@ -2,6 +2,7 @@ import UIKit
 
 final class FollowersListVM {
     
+    // MARK: Properties
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
     var isSearching: Bool = false
@@ -9,7 +10,11 @@ final class FollowersListVM {
     var hasMoreFollowers: Bool = true
     var isLoadingFollowers: Bool = false
     var lastScrollPosition: CGFloat = 0
-    
+}
+
+
+// MARK: - Methods
+extension FollowersListVM {
     
     func saveFavourite(favourite: Follower, completion: @escaping (Bool, String) -> ()) {
         PersistenceManager.updateWith(favourite: favourite, actionType: .add) { error in
