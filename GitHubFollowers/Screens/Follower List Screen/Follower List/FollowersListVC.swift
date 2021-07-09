@@ -119,8 +119,8 @@ private extension FollowersListVC {
     
     func updateUI(with followers: [Follower]) {
         if followers.count < NetworkManager.shared.perPage { self.viewModel.hasMoreFollowers = false }
-        self.viewModel.followers.append(contentsOf: followers)
-        if self.viewModel.followers.isEmpty {
+        viewModel.followers.append(contentsOf: followers)
+        if viewModel.followers.isEmpty {
             let message = Strings.userDoesNotHaveFollowers
             DispatchQueue.main.async {
                 self.showEmptyStateView(with: message, in: self.view)
@@ -128,7 +128,7 @@ private extension FollowersListVC {
             }
             return
         }
-        self.updateData(on: self.viewModel.followers)
+        updateData(on: viewModel.followers)
     }
     
     
