@@ -8,7 +8,7 @@ protocol UserInfoVCDelegate: class {
 class UserInfoVC: DataLoadingVC {
     
     // MARK: Properties
-    private let viewModel = UserInfoVM()
+    private var viewModel: UserInfoVM!
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -17,14 +17,13 @@ class UserInfoVC: DataLoadingVC {
     private let itemViewTwo = UIView()
     private let dateLabel = GFBodyLabel(textAlignment: .center)
     private var itemViews = [UIView]()
-    private var username: String!
     weak var delegate: UserInfoVCDelegate!
     
     
     // MARK: Initializers
-    init(username: String) {
+    init(viewModel: UserInfoVM) {
         super.init(nibName: nil, bundle: nil)
-        self.username = username
+        self.viewModel = viewModel
     }
     
     
@@ -37,7 +36,7 @@ class UserInfoVC: DataLoadingVC {
         configureViewController()
         configureScrollView()
         layoutUI()
-        getUserInfo(username: username)
+        getUserInfo()
     }
 }
 
@@ -52,15 +51,16 @@ private extension UserInfoVC {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = username
+        navigationItem.title = viewModel.username
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = doneButton
     }
     
     
-    func getUserInfo(username: String) {
+    func getUserInfo() {
         showLoadingView()
-        viewModel.getUserInfo(username: username) { [weak self] user, error in
+        
+        viewModel.getUserInfo() { [weak self] user, error in
             guard let self = self else { return }
             self.dismissLoadingView()
             
