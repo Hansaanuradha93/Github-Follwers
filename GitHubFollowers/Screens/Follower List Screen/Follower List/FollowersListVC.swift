@@ -177,16 +177,21 @@ extension FollowersListVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let activeArray = viewModel.isSearching ? viewModel.filteredFollowers : viewModel.followers
         let follower = activeArray[indexPath.item]
-        let destVC = UserInfoVC(username: follower.login ?? "")
-        destVC.delegate = self
-        let navController = UINavigationController(rootViewController: destVC)
-        present(navController, animated: true)
+        navigateToUserInfo(username: follower.login ?? "")
     }
 }
 
 
 // MARK: - ScrollView
 extension FollowersListVC {
+    
+    func navigateToUserInfo(username: String) {
+        let destVC = UserInfoVC(viewModel: UserInfoVM(username: username))
+        destVC.delegate = self
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
+    }
+    
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         viewModel.lastScrollPosition = scrollView.contentOffset.y
