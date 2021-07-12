@@ -2,7 +2,14 @@ import UIKit
 
 final class UserInfoVM {
     
-    func getUserInfo(username: String, completion: @escaping (User?, GFError?) -> ()) {
+    var username: String!
+    
+    init(username: String) {
+        self.username = username
+    }
+
+    
+    func getUserInfo(completion: @escaping (User?, GFError?) -> ()) {
         NetworkManager.shared.getUserInfo(for: username) { result in
             switch result {
             case .success(let user):
