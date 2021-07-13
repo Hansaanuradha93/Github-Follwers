@@ -90,11 +90,11 @@ private extension UserInfoVC {
     
     
     func configureUIElements(with user: User) {
-        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-        self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
-        self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
+        add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
+        add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
         let createdAt = user.createdAt ?? Date()
-        self.dateLabel.text = "\(Strings.githubSince) \(String(describing: createdAt.convertToMonthYearFormat()))"
+        dateLabel.text = "\(Strings.githubSince) \(String(describing: createdAt.convertToMonthYearFormat()))"
     }
     
     
@@ -113,7 +113,7 @@ private extension UserInfoVC {
     
     
     func add(childVC: UIViewController, to containerView: UIView) {
-        self.addChild(childVC)
+        addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
