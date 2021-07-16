@@ -24,7 +24,7 @@ class SearchVC: UIViewController {
 }
 
 
-// MARK: - Private Methods
+// MARK: - Objc Methods
 private extension SearchVC {
     
     @objc func pushFollwersViewController() {
@@ -36,7 +36,11 @@ private extension SearchVC {
         let follwersListVC = FollowersListVC(username: usernameTextField.text ?? "")
         navigationController?.pushViewController(follwersListVC, animated: true)
     }
-    
+}
+
+
+// MARK: - Private Methods
+private extension SearchVC {
     
     func resetUI() {
         navigationController?.setNavigationBarHidden(true, animated: true)
